@@ -56,7 +56,7 @@ export default function App() {
             if (snapshot.exists()) {
               const userData = snapshot.val(); // Retrieve the data of the node
               setUserData(userData);
-              setDisplayCurrency(userData.displayCurrency);
+              // setDisplayCurrency(userData.displayCurrency);
               console.log(
                 `user Data: ${JSON.stringify(userData)}`
                 // ; displayCurrency: ${userData.displayCurrency}`

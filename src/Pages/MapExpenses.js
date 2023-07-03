@@ -55,7 +55,6 @@ export default function MapExpenses({
       console.error("Geolocation is not supported by this browser.");
     }
   }, [expenseCounter]);
-  // console.log("expenseCounter", expenseCounter);
 
   // // Group expenses with category by date
   // useEffect(() => {
@@ -74,7 +73,6 @@ export default function MapExpenses({
   // console.log("Grouped expenses:", groupedExpenses);
 
   // Fetches displayCurrency from the database and update the client-side state i.e. Database > Client
-
   useEffect(() => {
     if (userData && userData.displayCurrency) {
       setDisplayCurrency(userData.displayCurrency);
@@ -84,8 +82,10 @@ export default function MapExpenses({
 
   // Update the displayCurrency in the database whenever there is a change in client-side state i.e., Client > Database
   useEffect(() => {
-    const userRef = ref(realTimeDatabase, `${DB_USER_FOLDER_NAME}/${uid}`);
-    update(userRef, { displayCurrency: displayCurrency });
+    if (displayCurrency !== null) {
+      const userRef = ref(realTimeDatabase, `${DB_USER_FOLDER_NAME}/${uid}`);
+      update(userRef, { displayCurrency: displayCurrency });
+    }
   }, [displayCurrency]);
 
   // For GoogleMap: Create isLoaded variable and assign it the results of useLoadScript + google maps API
