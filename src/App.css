@@ -6,10 +6,13 @@
 :root {
   --main-white: #ffffff;
   --main-gray: rgb(202, 200, 200);
-  --main-green: burlywood;
+  --main-green: #2d7248;
   --main-dark-gray: grey;
 }
-
+/* burlywood; */
+/* #2d7248; */
+/* #b1cec2; */
+/* #6acdd1; */
 .navbar-container {
   background-color: var(--main-green);
   border: 0;
@@ -81,7 +84,7 @@
 .expense-date-title {
   background-color: var(--main-dark-gray);
   padding: 5px 0px 5px 20px;
-  color: var(--main-green);
+  color: var(--main-white);
   font-weight: bold;
   font-size: 1.2rem;
 }

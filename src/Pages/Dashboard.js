@@ -22,6 +22,9 @@ export default function Dashboard({
   const [focusBar, setFocusBar] = useState(null);
   const [view, setView] = useState("daily");
   const [activeKey, setActiveKey] = useState("bargraph");
+  const mainColor = getComputedStyle(document.documentElement)
+    .getPropertyValue("--main-green")
+    .trim();
 
   // Find the minimum, maximum date in expensesList
   const calculateStartAndEndDates = (expensesCategory, view) => {
@@ -231,13 +234,13 @@ export default function Dashboard({
                   <XAxis dataKey="period" />
                   <YAxis domain={[0, "dataMax"]} />
                   <Tooltip cursor={false} content={<CustomTooltip />} />
-                  <Bar dataKey="displayAmount" fill="#deb887">
+                  <Bar dataKey="displayAmount">
                     {chartData.map((entry, index) => (
                       <Cell
                         key={index}
                         fill={
                           focusBar === index || focusBar === null
-                            ? "#deb887"
+                            ? mainColor
                             : "#cac8c8"
                         }
                       />

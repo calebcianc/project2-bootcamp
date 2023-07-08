@@ -48,7 +48,7 @@ export default function App() {
     async function fetchRatesAndUpdateDB() {
       try {
         const response = await fetch(
-          `https://v6.exchangerate-api.com/v6/f251da995575f9ae7cd5d521/latest/USD`
+          `https://v6.exchangerate-api.com/v6/${exchangeRatesApiKey}/latest/USD`
         );
         // Check if response status is ok
         if (!response.ok) {
@@ -328,7 +328,7 @@ export default function App() {
                 src="https://em-content.zobj.net/thumbs/240/apple/354/dollar-banknote_1f4b5.png"
                 width="30"
                 height="30"
-                className="d-inline-block align-top"
+                // className="d-inline-block align-top"
               />{" "}
               Dollar Direction
             </Navbar.Brand>
