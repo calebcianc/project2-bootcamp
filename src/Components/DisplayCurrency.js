@@ -34,13 +34,13 @@ export default function DisplayCurrency({
   return (
     <div>
       <div>
-        <Button
+        <div
           title="Click to change display currency"
-          variant="dark"
           onClick={handleShow}
+          style={{ cursor: "pointer", fontSize: "25px", fontWeight: "bold" }}
         >
           {displayCurrency} {totalAmount}
-        </Button>
+        </div>
       </div>
       <Modal show={showCurrencyModal} onHide={handleClose}>
         <Modal.Header closeButton>

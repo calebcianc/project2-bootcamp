@@ -119,20 +119,6 @@ export default function ListExpenses({
               fontSize: "1.5rem",
             }}
           >
-            <InputExpenses
-              uid={uid}
-              mapRef={mapRef}
-              lat={lat}
-              setLat={setLat}
-              lng={lng}
-              setLng={setLng}
-              expensesCategory={expensesCategory}
-              setExpenseCounter={setExpenseCounter}
-              currenciesList={currenciesList}
-              displayCurrency={displayCurrency}
-              categoriesData={categoriesData}
-              exchangeRates={exchangeRates}
-            />
             <Filter
               style={{ cursor: "pointer" }}
               setFilters={setFilters}
@@ -156,6 +142,20 @@ export default function ListExpenses({
           </div>
         ) : (
           <div>
+            <InputExpenses
+              uid={uid}
+              mapRef={mapRef}
+              lat={lat}
+              setLat={setLat}
+              lng={lng}
+              setLng={setLng}
+              expensesCategory={expensesCategory}
+              setExpenseCounter={setExpenseCounter}
+              currenciesList={currenciesList}
+              displayCurrency={displayCurrency}
+              categoriesData={categoriesData}
+              exchangeRates={exchangeRates}
+            />
             <AllExpenses
               uid={uid}
               currenciesList={currenciesList}

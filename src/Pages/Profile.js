@@ -135,46 +135,45 @@ export default function Profile({
   return (
     <div>
       {" "}
-      <div className="temporary-box">
+      <div className="profile-container">
         <div>
-          {profilePhotoURL ? (
-            <div>
-              <img
-                src={profilePhotoURL}
-                alt="user"
-                className="profile-picture"
-              />
-              <br /> <br />
-            </div>
-          ) : (
-            <>
-              <img
-                src={patchQuestionFillSvg}
-                alt="user"
-                className="profile-picture"
-              />
-              <br /> <br />
-            </>
-          )}
+          <h1>My Account</h1>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            {profilePhotoURL ? (
+              <div>
+                <img
+                  src={profilePhotoURL}
+                  alt="user"
+                  className="profile-picture"
+                />
+                <br /> <br />
+              </div>
+            ) : (
+              <>
+                <img
+                  src={patchQuestionFillSvg}
+                  alt="user"
+                  className="profile-picture"
+                />
+              </>
+            )}
+            <Button onClick={handleShow} className="profile-button-update-pic">
+              Update picture
+            </Button>
+          </div>
 
-          <Button onClick={handleShow} variant="secondary">
-            Update picture
-          </Button>
-          <br />
-          <br />
           <h1>{userData.displayName}</h1>
           {userInfo}
           <br />
-
           <div style={{ display: "flex" }}>
             <Button
               onClick={handleShow2}
-              variant="secondary"
               style={{ marginRight: "10px" }}
+              className="profile-button-update-profile"
             >
               Update profile
             </Button>
-            <Button variant="danger">
+            <Button className="profile-button-reset-password">
               <Link to="/resetpassword" style={{ color: "white" }}>
                 Reset password
               </Link>

@@ -101,73 +101,71 @@ export default function Category({ uid, isLoggedIn, categoriesData }) {
   };
 
   return (
-    <div className="category">
-      <h1>Categories</h1>
+    <div className="category-container">
+      <h1>My Categories</h1>
       <div>
         <h6>✏️ Click on the categories to edit</h6>
       </div>
       <Button
-        variant="info"
-        style={{
-          width: "18rem",
-          height: "5rem",
-        }}
+        className="category-button-add-new"
         onClick={() => handleShowCatModal()}
         title="Click to add new category"
       >
         + Add Category
       </Button>
       {/* loop through and show each category as a card */}
-      {categoriesData.map((category, index) => (
-        <Card
-          key={index}
-          style={{
-            width: "18rem",
-          }}
-          className="category-card"
-        >
-          <Card.Body>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <span
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  borderRadius: "50%",
-                  width: "3rem",
-                  height: "3rem",
-                  fontSize: "2rem",
-                  backgroundColor: category.color,
-                }}
-              >
-                {category.emoji}
-              </span>
-              <span style={{ marginLeft: "2rem" }}>{category.category}</span>
-              <span
-                style={{
-                  marginLeft: "auto",
-                  cursor: "pointer",
-                }}
-                //emoji pencil to edit each category
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleShowCatModal(category);
-                }}
-                title="Click to edit category"
-              >
-                ✏️
-              </span>
-              <span
-                onClick={() => handleDeleteCategory(category.id)}
-                title="Click to delete category"
-                style={{ marginLeft: "1rem", cursor: "pointer" }}
-              >
-                🗑️
-              </span>
-            </div>
-          </Card.Body>
-        </Card>
-      ))}
+      <div className="category-list">
+        {categoriesData.map((category, index) => (
+          <Card
+            key={index}
+            // style={{
+            //   width: "18rem",
+            // }}
+            className="category-card"
+          >
+            <Card.Body>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <span
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    borderRadius: "50%",
+                    width: "3rem",
+                    height: "3rem",
+                    fontSize: "2rem",
+                    backgroundColor: category.color,
+                  }}
+                >
+                  {category.emoji}
+                </span>
+                <span style={{ marginLeft: "2rem" }}>{category.category}</span>
+                <span
+                  style={{
+                    marginLeft: "auto",
+                    cursor: "pointer",
+                  }}
+                  //emoji pencil to edit each category
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleShowCatModal(category);
+                  }}
+                  title="Click to edit category"
+                >
+                  ✏️
+                </span>
+                <span
+                  onClick={() => handleDeleteCategory(category.id)}
+                  title="Click to delete category"
+                  style={{ marginLeft: "1rem", cursor: "pointer" }}
+                >
+                  🗑️
+                </span>
+              </div>
+            </Card.Body>
+          </Card>
+        ))}
+      </div>
       {/* Modal to key in new category and update category */}
       <Modal show={showCatModal} onHide={handleCloseCatModal}>
         <Modal.Header closeButton>
@@ -251,10 +249,10 @@ export default function Category({ uid, isLoggedIn, categoriesData }) {
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseCatModal}>
+          <Button onClick={handleCloseCatModal} className="close-button">
             Close
           </Button>
-          <Button variant="primary" onClick={handleSubmit}>
+          <Button onClick={handleSubmit} className="add-button">
             {selectedCategoryId ? "Update" : "Add"}
           </Button>
         </Modal.Footer>

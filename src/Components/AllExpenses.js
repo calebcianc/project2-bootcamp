@@ -3,7 +3,6 @@ import "../App.css";
 import EditExpenses from "./EditExpenses";
 import { useRef, useEffect } from "react";
 import { Card, Form } from "react-bootstrap";
-
 export default function AllExpenses({
   uid,
   currenciesList,
@@ -25,7 +24,7 @@ export default function AllExpenses({
   selectedExpensesData,
   setSelectedExpensesData,
   exchangeRates,
-  displayCurrency
+  displayCurrency,
 }) {
   const highlightedCardRef = useRef(null); // Create reference for highlighted card
   let today = new Date();
@@ -48,7 +47,6 @@ export default function AllExpenses({
       }
     });
   };
-
   return (
     <div>
       {Object.keys(groupedExpenses).length === 0 ? (
@@ -63,7 +61,6 @@ export default function AllExpenses({
               ? new Date(filters.startDate)
               : null;
             let endDate = filters.endDate ? new Date(filters.endDate) : null;
-
             if (startDate && expenseDate < startDate) return false;
             if (endDate && expenseDate > endDate) return false;
             if (filters.category && expense.category !== filters.category)
@@ -78,26 +75,15 @@ export default function AllExpenses({
               expense.displayAmount > filters.upperLimit
             )
               return false;
-
             return true;
           });
-
           if (filteredExpenses.length === 0) return null;
-
           return (
             <div key={date}>
               {/*overall date header */}
-              <div
-                style={{
-                  backgroundColor: "#D3D3D3",
-                  color: "black",
-                  padding: "5px 0px 5px 20px",
-                  // fontWeight: "bold",
-                }}
-              >
+              <div className="expense-date-title">
                 <Card.Header>{date}</Card.Header>
               </div>
-
               {/* Map through the expenses within each date-group */}
               {filteredExpenses.map(
                 (expense) =>
@@ -141,6 +127,7 @@ export default function AllExpenses({
                                     className="mb-3"
                                   >
                                     <Form.Check
+                                      className="custom-checkbox"
                                       type="checkbox"
                                       checked={selectedExpenses.includes(
                                         expense.id
@@ -196,7 +183,6 @@ export default function AllExpenses({
                                 </Card.Text>
                               </div>
                             </div>
-
                             {/* Div to contain the emoji-buttons to show receipt, edit expense, delete expense */}
                             <div
                               style={{

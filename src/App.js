@@ -319,17 +319,10 @@ export default function App() {
 
   return (
     <>
-      <Navbar bg="light" fixed="top">
-        <Container
-          className="navbar-container"
-          style={{
-            maxWidth: "1025px",
-            paddingLeft: "0",
-            paddingRight: "0",
-          }}
-        >
-          <Container>
-            <Navbar.Brand href="#home">
+      <Navbar fixed="top" className="navbar-container">
+        <Container>
+          <Container className="navbar-container">
+            <Navbar.Brand as={Link} to="/mapexpenses">
               <img
                 alt="Money Stack Emoji"
                 src="https://em-content.zobj.net/thumbs/240/apple/354/dollar-banknote_1f4b5.png"
@@ -340,26 +333,33 @@ export default function App() {
               Dollar Direction
             </Navbar.Brand>
           </Container>
-          <Container className="navbar-home-container">
-            <Nav>
+          <Container className="navbar-main">
+            <Nav className="top-nav">
               <Nav.Link as={Link} to="/mapexpenses">
-                Home
+                Expenses
               </Nav.Link>
               {uid ? (
                 <Nav.Link as={Link} to="/dashboard">
                   Dashboard
                 </Nav.Link>
               ) : null}
+            </Nav>
+          </Container>
+          <Container className="navbar-profile">
+            <Nav>
               <NavDropdown
                 title={
                   profilePhotoURL ? (
-                    <img
-                      className="rounded-circle"
-                      src={profilePhotoURL}
-                      alt="user"
-                      width="30"
-                      height="30"
-                    />
+                    <>
+                      <img
+                        className="rounded-circle"
+                        src={profilePhotoURL}
+                        alt="user"
+                        width="30"
+                        height="30"
+                      />{" "}
+                      {userData.displayName}
+                    </>
                   ) : (
                     <img
                       src={patchQuestionFillSvg}
@@ -373,9 +373,11 @@ export default function App() {
               >
                 {isLoggedIn ? (
                   <>
-                    <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+                    <NavDropdown.Item href="/profile">
+                      My Account
+                    </NavDropdown.Item>
                     <NavDropdown.Item href="/category">
-                      Category
+                      My Category
                     </NavDropdown.Item>
                     <NavDropdown.Item
                       onClick={() => {

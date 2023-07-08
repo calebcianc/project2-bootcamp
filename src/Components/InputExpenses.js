@@ -132,16 +132,14 @@ export default function InputExpenses({
   return (
     <div>
       <div>
-        <span
-          id="add-expenses"
-          className="rounded-rectangle"
-          variant="outline-dark"
+        <Button
+          className="expense-button-add-new"
           onClick={handleShow}
           title="Click to add new expenses"
-          style={{ cursor: "pointer", margin: "0 5px" }}
+          style={{ width: "100%" }}
         >
-          💸
-        </span>
+          + Add Expense
+        </Button>
       </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -229,19 +227,12 @@ export default function InputExpenses({
                     onChange={(e) => setAddress(e.target.value)}
                   />
                   <Button
-                    variant="outline-secondary"
                     size="sm"
                     id="look-up-btn"
                     onClick={getLatLng}
-                    style={{
-                      flexShrink: 1,
-                      overflow: "hidden",
-                      whiteSpace: "nowrap",
-                      textOverflow: "ellipsis",
-                      minWidth: 0,
-                    }}
+                    variant="outline-secondary"
                   >
-                    Look up
+                    Search
                   </Button>
                 </div>
               </div>
@@ -301,13 +292,13 @@ export default function InputExpenses({
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button onClick={handleClose} className="close-button">
             Close
           </Button>
           <Button
-            variant="primary"
             onClick={handleSubmit}
             disabled={category === "" || amount === 0}
+            className="add-button"
           >
             Add item
           </Button>

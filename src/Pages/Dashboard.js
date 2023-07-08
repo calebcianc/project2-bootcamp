@@ -21,6 +21,7 @@ export default function Dashboard({
   const [selectedPeriod, setSelectedPeriod] = useState("");
   const [focusBar, setFocusBar] = useState(null);
   const [view, setView] = useState("daily");
+  const [activeKey, setActiveKey] = useState("bargraph");
 
   // Find the minimum, maximum date in expensesList
   const calculateStartAndEndDates = (expensesCategory, view) => {
@@ -145,9 +146,12 @@ export default function Dashboard({
   const viewButtons = ["daily", "monthly", "yearly"].map((viewName) => (
     <Button
       key={viewName}
-      variant={view === viewName ? "warning" : "outline-warning"}
       onClick={() => setView(viewName)}
-      className="custom-button"
+      className={
+        view === viewName
+          ? "dashboard-view-button-selected"
+          : "dashboard-view-button-default"
+      }
     >
       {viewName.charAt(0).toUpperCase() + viewName.slice(1)}
     </Button>
@@ -175,14 +179,21 @@ export default function Dashboard({
     <>
       <div className="dashboard">
         <h1 className="dashboard-header">Total spending </h1>
-        <div className="dashboard-view-buttons">{viewButtons}</div>
+        <div className="dashboard-view-buttons-all ">{viewButtons}</div>
         <Tabs
           defaultActiveKey="bargraph"
           id="fill-tab-example"
           className="mb-3"
           fill
         >
-          <Tab eventKey="bargraph" title="Bar Graph">
+          <Tab
+            eventKey="bargraph"
+            title={
+              <span className={activeKey === "bargraph" ? "active-tab" : ""}>
+                Bar Graph
+              </span>
+            }
+          >
             Title for bargraph
             <div className="chart-container">
               <div className="chart-wrapper">
@@ -214,14 +225,14 @@ export default function Dashboard({
                   <XAxis dataKey="period" />
                   <YAxis domain={[0, "dataMax"]} />
                   <Tooltip cursor={false} content={<CustomTooltip />} />
-                  <Bar dataKey="displayAmount" fill="#8884d8">
+                  <Bar dataKey="displayAmount" fill="#deb887">
                     {chartData.map((entry, index) => (
                       <Cell
                         key={index}
                         fill={
                           focusBar === index || focusBar === null
-                            ? "#8884d8"
-                            : "rgba(43, 92, 231, 0.2)"
+                            ? "#deb887"
+                            : "#cac8c8"
                         }
                       />
                     ))}
