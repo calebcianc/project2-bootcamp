@@ -107,7 +107,7 @@ export default function Category({ uid, isLoggedIn, categoriesData }) {
         <h6>✏️ Click on the categories to edit</h6>
       </div>
       <Button
-        className="category-button-add-new"
+        className="add-button "
         onClick={() => handleShowCatModal()}
         title="Click to add new category"
       >

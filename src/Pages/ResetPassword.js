@@ -28,8 +28,7 @@ export default function PasswordResetForm() {
 
   return (
     <div className="reset-container">
-      <h2>Password Reset</h2>
-      <br />
+      <h1>Password Reset</h1>
       <div>
         {resetSent ? (
           <p>A password reset link has been sent to your email address.</p>
@@ -48,8 +47,8 @@ export default function PasswordResetForm() {
                 />
                 <Button
                   type="submit"
-                  variant="outline-secondary"
                   id="button-addon2"
+                  className="reset-pw-button"
                 >
                   Reset Password
                 </Button>
@@ -59,7 +58,9 @@ export default function PasswordResetForm() {
           </div>
         )}
         <div className="text-center" style={{ marginTop: "5px" }}>
-          <Link to="/authform">Remembered your password? Sign In here!</Link>
+          <Link to="/authform" style={{ color: "#deb887" }}>
+            Remembered your password? Sign In here!
+          </Link>
         </div>
       </div>
     </div>

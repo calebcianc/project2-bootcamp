@@ -176,20 +176,26 @@ export default function Dashboard({
     : expensesCategory;
 
   return (
-    <>
-      <div className="dashboard">
-        <h1 className="dashboard-header">Total spending </h1>
+    <div className="dashboard-container">
+      <div className="dashboard-main">
+        <h1>Total spending </h1>
         <div className="dashboard-view-buttons-all ">{viewButtons}</div>
         <Tabs
+          activeKey={activeKey}
+          onSelect={(k) => setActiveKey(k)}
           defaultActiveKey="bargraph"
-          id="fill-tab-example"
-          className="mb-3"
           fill
         >
           <Tab
             eventKey="bargraph"
             title={
-              <span className={activeKey === "bargraph" ? "active-tab" : ""}>
+              <span
+                className={
+                  activeKey === "bargraph"
+                    ? "active-dashboard-tab"
+                    : "inactive-dashboard-tab"
+                }
+              >
                 Bar Graph
               </span>
             }
@@ -241,7 +247,20 @@ export default function Dashboard({
               </div>
             </div>
           </Tab>
-          <Tab eventKey="piechart" title="Pie Chart">
+          <Tab
+            eventKey="piechart"
+            title={
+              <span
+                className={
+                  activeKey === "piechart"
+                    ? "active-dashboard-tab"
+                    : "inactive-dashboard-tab"
+                }
+              >
+                Pie Chart
+              </span>
+            }
+          >
             Title for pie chart
             <div className="chart-container">
               <div className="chart-wrapper">
@@ -257,6 +276,6 @@ export default function Dashboard({
       <div>
         <ExpensesByCategory filteredExpenses={filteredExpenses} />
       </div>
-    </>
+    </div>
   );
 }

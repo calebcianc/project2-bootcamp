@@ -186,10 +186,10 @@ export default function Filter({ setFilters, categoriesData }) {
           </Row>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="outline-danger" onClick={handleClear}>
+          <Button onClick={handleClear} className="close-button">
             Clear
           </Button>
-          <Button variant="primary" onClick={handleSubmit}>
+          <Button onClick={handleSubmit} className="add-button">
             Filter
           </Button>
         </Modal.Footer>

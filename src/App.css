@@ -10,19 +10,6 @@
   --main-dark-gray: grey;
 }
 
-.App {
-  font-size: 1rem;
-  margin: auto;
-  margin-top: 63.78px;
-
-  min-height: 91svh;
-  max-width: 1025px;
-
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
-}
-
 .navbar-container {
   background-color: var(--main-green);
   border: 0;
@@ -48,10 +35,6 @@
     width: 100%;
     background-color: var(--main-green);
   }
-
-  .navbar-main .top-nav {
-    justify-content: space-evenly;
-  }
 }
 
 .navbar-profile {
@@ -59,8 +42,21 @@
   justify-content: flex-end;
 }
 
+.App {
+  margin: auto;
+  margin-top: 63.78px;
+  margin-bottom: 63.78px;
+
+  min-height: 91vh;
+  max-width: 1025px;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
 .map-container {
-  max-height: 45.5svh;
+  max-height: 45.5vh;
   height: 100%;
   width: 100%;
 }
@@ -73,7 +69,7 @@
 .list-container {
   display: flex; /* Use flexbox to align items */
   flex-direction: column;
-  max-height: 45.5svh;
+  max-height: 45.5vh;
   width: 100%;
 }
 
@@ -121,6 +117,7 @@
 .temporary-box {
   margin: auto;
   margin-top: 63.78px;
+  margin-bottom: 63.78px;
   min-height: 91svh;
   /* max-height: 45.5svh; */
   max-width: 1025px;
@@ -191,20 +188,19 @@
   margin-right: 10px;
 }
 
-.dashboard {
+.dashboard-container {
   margin: auto;
   margin-top: 63.78px;
 
   display: grid;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  /* max-width: 500px;
-  scroll-behavior: auto; */
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
 }
 
-.dashboard-header {
-  padding: 20px;
+.dashboard-main {
+  margin: auto;
+  align-items: center;
+  text-align: center;
 }
 
 .chart-container {
@@ -276,6 +272,10 @@
     height: 100%;
     min-height: 91vh;
   }
+  .dashboard-container {
+    height: 100%;
+    min-height: 91vh;
+  }
 }
 
 .category-container {
@@ -321,17 +321,12 @@
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 
-.profile-button-update-pic,
-.profile-button-update-profile,
-.category-button-add-new,
-.expense-button-add-new,
 .add-button {
   background-color: var(--main-green) !important;
   border-color: var(--main-green) !important;
   margin-bottom: 10px;
 }
 
-.profile-button-reset-password,
 .close-button {
   background-color: var(--main-gray) !important;
   border-color: var(--main-green) !important;
@@ -365,4 +360,19 @@
 
 .inactive-dashboard-tab {
   color: var(--main-dark-gray) !important;
+}
+
+.reset-pw-button {
+  background-color: var(--main-green) !important;
+  border-color: var(--main-green) !important;
+}
+
+.signup-container {
+  margin: auto;
+  margin-top: 63.78px;
+  margin-bottom: 63.78px;
+  min-height: 91vh;
+
+  display: flex;
+  flex-direction: column;
 }

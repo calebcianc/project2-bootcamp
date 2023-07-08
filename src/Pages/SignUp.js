@@ -119,18 +119,17 @@ export default function SignUp({
 
   return (
     <>
-      <Container
-        className="d-flex flex-column align-items-left justify-content-center"
-        style={{ height: "100vh" }}
-      >
+      <Container className="signup-container">
         {" "}
-        <h2>Create Account</h2>
-        <br />
+        <h1>Create Account</h1>
         {isLoggedIn ? (
           <div>
             <h2>Welcome {displayName}</h2>
             <h5>
-              Click on <Link to="/mapexpenses">MapExpenses </Link>
+              Click on{" "}
+              <Link to="/mapexpenses" style={{ color: "#deb887" }}>
+                MapExpenses{" "}
+              </Link>
               to start tracking your expenses!
             </h5>
           </div>
@@ -225,9 +224,9 @@ export default function SignUp({
                 </Form.Group>
 
                 <Button
-                  variant="primary"
                   onClick={signUp}
                   style={{ width: "40%" }}
+                  className="add-button"
                 >
                   Sign Up
                 </Button>
@@ -235,7 +234,7 @@ export default function SignUp({
                 <GoogleButton />
 
                 <div className="text-left" style={{ marginTop: "5px" }}>
-                  <Link to="/authform">
+                  <Link to="/authform" style={{ color: "#deb887" }}>
                     Already have an account? Sign In here!
                   </Link>
                 </div>

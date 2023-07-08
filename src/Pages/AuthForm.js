@@ -36,14 +36,13 @@ export default function AuthForm({ isLoggedIn, username }) {
       >
         {isLoggedIn ? (
           <div style={{ textAlign: "center" }}>
-            <h2>Welcome </h2>
+            <h1>Welcome </h1>
             <h5>Click on the top navigator to start posting!</h5>
           </div>
         ) : (
           <div>
             <div style={{ textAlign: "left" }}>
-              <h2>Sign In</h2>
-              <br />
+              <h1>Sign In</h1>
             </div>
             <Row>
               <Col>
@@ -75,9 +74,9 @@ export default function AuthForm({ isLoggedIn, username }) {
                   </Form.Group>
 
                   <Button
-                    variant="primary"
                     onClick={signIn}
                     style={{ width: "40%" }}
+                    className="add-button"
                   >
                     Sign In
                   </Button>
@@ -86,11 +85,13 @@ export default function AuthForm({ isLoggedIn, username }) {
                   <GoogleButton />
 
                   <div className="text-left" style={{ marginTop: "5px" }}>
-                    <Link to="/signUp">
+                    <Link to="/signUp" style={{ color: "#deb887" }}>
                       Don't have an account? Create one here!
                     </Link>
                     <br />
-                    <Link to="/resetpassword">Forgot your password? </Link>
+                    <Link to="/resetpassword" style={{ color: "#deb887" }}>
+                      Forgot your password?{" "}
+                    </Link>
                   </div>
                 </Form>
               </Col>

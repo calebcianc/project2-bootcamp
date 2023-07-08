@@ -157,7 +157,7 @@ export default function Profile({
                 />
               </>
             )}
-            <Button onClick={handleShow} className="profile-button-update-pic">
+            <Button onClick={handleShow} className="add-button">
               Update picture
             </Button>
           </div>
@@ -169,11 +169,11 @@ export default function Profile({
             <Button
               onClick={handleShow2}
               style={{ marginRight: "10px" }}
-              className="profile-button-update-profile"
+              className="add-button "
             >
               Update profile
             </Button>
-            <Button className="profile-button-reset-password">
+            <Button className="close-button">
               <Link to="/resetpassword" style={{ color: "white" }}>
                 Reset password
               </Link>
@@ -202,10 +202,10 @@ export default function Profile({
           </Modal.Body>
 
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
+            <Button onClick={handleClose} className="close-button">
               Close
             </Button>
-            <Button variant="primary" onClick={handleUpload}>
+            <Button onClick={handleUpload} className="add-button">
               Upload
             </Button>
           </Modal.Footer>
@@ -276,10 +276,14 @@ export default function Profile({
           </Modal.Body>
 
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose2}>
+            <Button onClick={handleClose2} className="close-button">
               Close
             </Button>
-            <Button variant="primary" onClick={handleUpdate}>
+            <Button
+              variant="primary"
+              onClick={handleUpdate}
+              className="add-button"
+            >
               Update
             </Button>
           </Modal.Footer>

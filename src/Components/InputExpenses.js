@@ -133,7 +133,7 @@ export default function InputExpenses({
     <div>
       <div>
         <Button
-          className="expense-button-add-new"
+          className="add-button"
           onClick={handleShow}
           title="Click to add new expenses"
           style={{ width: "100%" }}
