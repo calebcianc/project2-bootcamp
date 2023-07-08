@@ -23,6 +23,7 @@ export default function MapExpenses({
   displayCurrency,
   setDisplayCurrency,
   exchangeRates,
+  noExpenses,
 }) {
   const [userLocation, setUserLocation] = useState(null);
   const [isHighlighted, setIsHighlighted] = useState(null);
@@ -164,6 +165,7 @@ export default function MapExpenses({
             categoriesData={categoriesData}
             setExpenseCounter={setExpenseCounter}
             exchangeRates={exchangeRates}
+            noExpenses={noExpenses}
           />
         </div>
       ) : (

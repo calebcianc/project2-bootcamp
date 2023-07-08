@@ -41,6 +41,7 @@ export default function App() {
   const [displayCurrency, setDisplayCurrency] = useState(null);
   const [exchangeRates, setExchangeRates] = useState({});
   const today = new Date().toISOString().substring(0, 10);
+  const [noExpenses, setNoExpenses] = useState(false);
 
   // Fetch the day's exchange rates
   const exchangeRatesApiKey = process.env.REACT_APP_EXCHANGE_API_KEY;
@@ -267,6 +268,7 @@ export default function App() {
           }
         } else {
           setExpensesCategory([]); // Set expensesCategory to an empty array if there are no expenses
+          setNoExpenses(true);
         }
 
         setIsLoadingExpenses(false); // <-- Set isLoadingExpenses to false when fetch is successful
@@ -386,6 +388,7 @@ export default function App() {
                             setProfilePhotoURL("");
                             setUid("");
                             navigate("/mapexpenses");
+                            setGroupedExpenses([]);
                           })
                           .catch((error) => {
                             console.error(error);
@@ -426,6 +429,7 @@ export default function App() {
               displayCurrency={displayCurrency}
               setDisplayCurrency={setDisplayCurrency}
               exchangeRates={exchangeRates}
+              noExpenses={noExpenses}
             />
           }
         />

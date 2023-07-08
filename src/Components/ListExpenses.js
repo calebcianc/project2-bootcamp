@@ -30,6 +30,7 @@ export default function ListExpenses({
   // isLoading,
   isLoadingExpenses,
   exchangeRates,
+  noExpenses,
 }) {
   const [showModal, setShowModal] = useState(false);
   const [selectedExpense, setSelectedExpense] = useState(null);
@@ -178,6 +179,8 @@ export default function ListExpenses({
               setSelectedExpensesData={setSelectedExpensesData}
               exchangeRates={exchangeRates}
               displayCurrency={displayCurrency}
+              isLoadingExpenses={isLoadingExpenses}
+              noExpenses={noExpenses}
             />
           </div>
         )}
