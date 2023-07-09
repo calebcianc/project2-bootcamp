@@ -341,6 +341,7 @@ export default function App() {
               Dollar Direction
             </Navbar.Brand>
           </Container>
+
           <Container className="navbar-main">
             <Nav className="top-nav">
               <Nav.Link as={Link} to="/mapexpenses">
