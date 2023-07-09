@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   XAxis,
   YAxis,
@@ -12,21 +12,18 @@ import { Button, Tab, Tabs } from "react-bootstrap";
 import ExpPieChart from "../Components/ExpPieChart";
 import ExpensesByCategory from "../Components/ExpensesByCategory";
 
-export default function Dashboard({
-  uid,
-  isLoggedIn,
-  expensesCategory,
-  categoriesData,
-}) {
+export default function Dashboard({ expensesCategory, categoriesData }) {
   const [selectedPeriod, setSelectedPeriod] = useState("");
   const [focusBar, setFocusBar] = useState(null);
   const [view, setView] = useState("daily");
   const [activeKey, setActiveKey] = useState("bargraph");
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
   const mainColor = getComputedStyle(document.documentElement)
     .getPropertyValue("--main-green")
     .trim();
 
-  // Find the minimum, maximum date in expensesList
+  // Function to find the minimum, maximum date in expensesList
   const calculateStartAndEndDates = (expensesCategory, view) => {
     let endDate = new Date();
     let firstDate = null;
@@ -46,7 +43,7 @@ export default function Dashboard({
     } else if (view === "yearly") {
       startDate.setFullYear(endDate.getFullYear() - 3); // 3 years before end date
     } else {
-      startDate.setDate(endDate.getDate() - 30); // 30 days before end date
+      startDate.setMonth(startDate.getMonth() - 1); // 1 month before end date
     }
     // Check calculated start date with first date. If first date is later than calculated start date. set start date=first date
     if (firstDate > startDate) {
@@ -54,12 +51,18 @@ export default function Dashboard({
     }
     return { startDate, endDate };
   };
-  const { startDate, endDate } = calculateStartAndEndDates(
-    expensesCategory,
-    view
-  );
 
-  // generate a list of all possible period between start and end date
+  // Update the startDate and endDate using useState and the calculateStartAndEndDates function
+  useEffect(() => {
+    const { startDate, endDate } = calculateStartAndEndDates(
+      expensesCategory,
+      view
+    );
+    setStartDate(startDate);
+    setEndDate(endDate);
+  }, [expensesCategory, view]);
+
+  // Function to generate a list of all possible period between start and end date
   const generateDatesInRange = (startDate, endDate, view) => {
     const dates = [];
     let currentDate = new Date(endDate);
@@ -80,7 +83,8 @@ export default function Dashboard({
     }
     return dates;
   };
-  // function to calculate display amount
+
+  // Function to calculate display amount
   const calculateDisplayAmount = (
     expensesCategory,
     view,
@@ -117,7 +121,8 @@ export default function Dashboard({
     });
     return { allPeriods, displayAmountByPeriod };
   };
-  // Then call this function with the selected view
+
+  // Call calculateDisplayAmount function with the selected view
   const { allPeriods, displayAmountByPeriod } = calculateDisplayAmount(
     expensesCategory,
     view,
@@ -138,7 +143,7 @@ export default function Dashboard({
     if (active) {
       return (
         <div className={"Custom-Tooltip"}>
-          {label}
+          <strong>{label}</strong>
           <br />
           {"Amount: " + payload[0].value}
         </div>
@@ -146,6 +151,7 @@ export default function Dashboard({
     }
     return null;
   };
+
   const viewButtons = ["daily", "monthly", "yearly"].map((viewName) => (
     <Button
       key={viewName}
@@ -160,7 +166,7 @@ export default function Dashboard({
     </Button>
   ));
 
-  /* Filter expenses based on the selected date. If selectedDate is not null, filter expensesList such that expense.date is equiv to selectedDate, else show all. Used for pie chart and list expenses*/
+  /* Filter expenses based on the selected date. If selectedDate is not null, filter expensesList such that expense.date is equiv to selectedDate, else show all according to the view. Used for pie chart and list expenses*/
   const filteredExpenses = selectedPeriod
     ? expensesCategory.filter((expense) => {
         if (view === "daily") {
@@ -176,7 +182,26 @@ export default function Dashboard({
           return false;
         }
       })
-    : expensesCategory;
+    : expensesCategory.filter((expense) => {
+        if (view === "daily") {
+          return (
+            expense.date >= startDate.toISOString().slice(0, 10) &&
+            expense.date <= endDate.toISOString().slice(0, 10)
+          );
+        } else if (view === "monthly") {
+          return (
+            expense.date.slice(0, 7) >= startDate.toISOString().slice(0, 7) &&
+            expense.date.slice(0, 7) <= endDate.toISOString().slice(0, 7)
+          );
+        } else if (view === "yearly") {
+          return (
+            expense.date.slice(0, 4) >= startDate.toISOString().slice(0, 4) &&
+            expense.date.slice(0, 4) <= endDate.toISOString().slice(0, 4)
+          );
+        } else {
+          return false;
+        }
+      });
 
   return (
     <div className="dashboard-container">
@@ -203,7 +228,12 @@ export default function Dashboard({
               </span>
             }
           >
-            Title for bargraph
+            {selectedPeriod
+              ? `Expenses for ${selectedPeriod}`
+              : `Expenses from ${startDate
+                  .toISOString()
+                  .slice(0, 10)} to ${endDate.toISOString().slice(0, 10)}`}
+
             <div className="chart-container">
               <div className="chart-wrapper">
                 <BarChart
@@ -264,7 +294,11 @@ export default function Dashboard({
               </span>
             }
           >
-            Title for pie chart
+            {selectedPeriod
+              ? `Expenses for ${selectedPeriod}`
+              : `Expenses from ${startDate
+                  .toISOString()
+                  .slice(0, 10)} to ${endDate.toISOString().slice(0, 10)}`}
             <div className="chart-container">
               <div className="chart-wrapper">
                 <ExpPieChart

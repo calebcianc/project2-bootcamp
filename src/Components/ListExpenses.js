@@ -27,14 +27,13 @@ export default function ListExpenses({
   handleDeleteExpenses,
   formatter,
   isHighlighted,
-  // isLoading,
   isLoadingExpenses,
   exchangeRates,
   noExpenses,
 }) {
   const [showModal, setShowModal] = useState(false);
   const [selectedExpense, setSelectedExpense] = useState(null);
-  const highlightedCardRef = useRef(null); // Create reference for highlighted card
+  const highlightedCardRef = useRef(null);
   const [filters, setFilters] = useState({
     category: null,
     startDate: null,
@@ -45,24 +44,37 @@ export default function ListExpenses({
   const [showCheckboxes, setShowCheckboxes] = useState(false);
   const [selectedExpenses, setSelectedExpenses] = useState([]);
   const [selectedExpensesData, setSelectedExpensesData] = useState([]);
+  const [totalAmount, setTotalAmount] = useState(0);
 
-  // Display receipt when showReceipt button is clicked
   const handleShowReceiptClick = (expense) => {
     setSelectedExpense(expense);
     setShowModal(true);
   };
 
-  // Hide receipt when button is clicked
   const closeReceiptModal = () => {
     setSelectedExpense(null);
     setShowModal(false);
   };
 
-  // Sum up the totalAmount for all expenses to be displayed
-  const totalAmount = expensesCategory.reduce(
-    (accumulator, expense) => accumulator + parseFloat(expense.displayAmount),
-    0
-  );
+  // Filter the expenses based on the selected start date and end date
+  useEffect(() => {
+    const filteredExpenses = expensesCategory.filter((expense) => {
+      const expenseDate = new Date(expense.date);
+      return (
+        expenseDate >= new Date(filters.startDate) &&
+        expenseDate <= new Date(filters.endDate)
+      );
+    });
+
+    // Sum up the totalAmount for the filtered expenses
+    const calculatedTotalAmount = filteredExpenses.reduce(
+      (accumulator, expense) => accumulator + parseFloat(expense.displayAmount),
+      0
+    );
+
+    // update the totalAmount state. use toFixed(2) to show 2 dp even when there's only 1 decimal place.
+    setTotalAmount(calculatedTotalAmount.toFixed(2));
+  }, [filters, expensesCategory]);
 
   // Pan to latest expense location whenever there's a change in expenses
   useEffect(() => {
@@ -107,7 +119,7 @@ export default function ListExpenses({
             <DisplayCurrency
               displayCurrency={displayCurrency}
               setDisplayCurrency={setDisplayCurrency}
-              totalAmount={formatter.format(totalAmount)}
+              totalAmount={totalAmount}
               currenciesList={currenciesList}
             />
           </div>
@@ -201,7 +213,7 @@ export default function ListExpenses({
           )}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={closeReceiptModal}>
+          <Button className="close-button" onClick={closeReceiptModal}>
             Close
           </Button>
         </Modal.Footer>
