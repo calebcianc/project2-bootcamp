@@ -24,6 +24,7 @@
     "react-color": "^2.19.3",
     "react-dom": "^18.1.0",
     "react-geocode": "^0.2.3",
+    "react-icons": "^4.10.1",
     "react-router-dom": "^6.12.1",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.8",
