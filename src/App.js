@@ -344,9 +344,11 @@ export default function App() {
 
           <Container className="navbar-main">
             <Nav className="top-nav">
-              <Nav.Link as={Link} to="/mapexpenses">
-                Expenses
-              </Nav.Link>
+              {uid ? (
+                <Nav.Link as={Link} to="/mapexpenses">
+                  Expenses
+                </Nav.Link>
+              ) : null}
             </Nav>
             <Nav className="top-nav">
               {uid ? (

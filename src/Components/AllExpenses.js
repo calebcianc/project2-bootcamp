@@ -55,7 +55,7 @@ export default function AllExpenses({
   }, [isLoadingExpenses]);
 
   return (
-    <div>
+    <div className="allExp-container">
       {noExpenses
         ? null
         : // Map through the object of date-grouped expenses

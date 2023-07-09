@@ -76,7 +76,7 @@ export default function ExpensesByCategory({ filteredExpenses }) {
                         {expense.displayCurrency}{" "}
                         {parseFloat(expense.displayAmount).toFixed(2)}
                         {" ("}
-                        {expense.currency} {expense.amount}
+                        {expense.currency} {expense.amount})
                         <br />
                         {expense.description}
                       </Card.Text>

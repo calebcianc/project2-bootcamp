@@ -75,6 +75,7 @@
     padding: 0 !important;
     display: flex;
     justify-content: space-evenly;
+    border-top: 1px solid black;
   }
   .navbar-profile {
     /* flex-grow: 1; */
@@ -93,7 +94,7 @@
   margin: auto;
   margin-top: 46px;
   /* margin-bottom: 63.78px; */
-  max-height: 90vh;
+  max-height: 94vh;
   max-width: 1025px;
 
   display: grid;
@@ -102,7 +103,7 @@
 }
 
 .map-container {
-  max-height: 47vh;
+  height: 47svh;
   height: 100%;
   width: 100%;
 }
@@ -120,7 +121,8 @@
 }
 
 .allExp-container {
-  overflow-y: scroll;
+  max-height: 34vh;
+  overflow-y: auto;
   cursor: pointer;
 }
 
@@ -146,13 +148,13 @@
 }
 
 .welcome-container {
-  max-height: 47svh;
+  height: 47svh;
   max-width: 1025px;
   font-size: 1rem;
   padding: 10px;
 
   color: black;
-  background-color: white;
+  background-color: whitesmoke;
 
   display: flex;
   align-items: center;
@@ -182,12 +184,11 @@
 
 .mini-navbar {
   width: 100%;
-  margin: 10px 0;
+  margin: 0 0 5px 0;
+  padding: 0 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0px;
-  padding: 0 10px;
   background-color: whitesmoke;
 }
 
@@ -302,6 +303,12 @@
 
 /* if viewport width is greater than 700px */
 @media (min-width: 700px) {
+  .allExp-container {
+    max-height: 83vh;
+    overflow-y: auto;
+    cursor: pointer;
+  }
+
   .dashboard-container {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
@@ -321,13 +328,13 @@
 
   .dashboard-main {
     grid-column: 1;
-
     height: 88svh;
   }
 
   .dashboard-expenses {
     grid-column: 2;
-    height: 88svh;
+    margin-top: 11svh;
+    height: 77svh;
   }
 
   .App {
@@ -460,14 +467,15 @@
 }
 
 .reset-pw-button {
-  background-color: var(--main-green) !important;
+  /* background-color: var(--main-green) !important; */
   border-color: var(--main-green) !important;
 }
 
 .signup-container {
+  max-width: 1025px;
   margin: auto;
   margin-top: 46px;
-  margin-bottom: 63.78px;
+  /* margin-bottom: 63.78px; */
   min-height: 94vh;
 
   display: flex;
