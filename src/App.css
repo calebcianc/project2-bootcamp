@@ -65,6 +65,11 @@
   margin-right: 10px;
 }
 
+.custom-nav-dropdown .dropdown-item:hover,
+.custom-nav-dropdown .dropdown-item:focus {
+  background-color: var(--main-green);
+}
+
 .App {
   margin: auto;
   margin-top: 63.78px;

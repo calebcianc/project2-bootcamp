@@ -365,6 +365,7 @@ export default function App() {
               )
             }
             id="basic-nav-dropdown"
+            className="custom-nav-dropdown"
           >
             {isLoggedIn ? (
               <>
