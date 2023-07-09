@@ -136,13 +136,12 @@ export default function AllExpenses({
                                         display: "flex",
                                         justifyContent: "center",
                                         alignItems: "center",
-                                        borderRadius: "50%",
+                                        borderRadius: "75%",
                                         width: "3rem",
                                         height: "3rem",
-                                        fontSize: "2rem",
+                                        fontSize: "1.5rem",
                                         backgroundColor: expense.color,
                                       }}
-                                      className="mb-3"
                                     >
                                       <Form.Check
                                         className="custom-checkbox"

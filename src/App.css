@@ -135,8 +135,10 @@
 }
 
 .custom-checkbox .form-check-input:checked {
-  background-color: var(--main-dark-gray) !important;
-  border-color: var(--main-green) !important;
+  background-color: #8ce73b !important;
+  border-color: black !important;
+  margin-bottom: 0;
+  /* var(--main-green) */
 }
 
 .center-toast {
