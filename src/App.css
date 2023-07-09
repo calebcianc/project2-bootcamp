@@ -6,7 +6,7 @@
 :root {
   --main-white: #ffffff;
   --main-gray: rgb(202, 200, 200);
-  --main-green: white;
+  --main-green: #2d7248;
   --main-dark-gray: grey;
 }
 
@@ -15,20 +15,12 @@
   border: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
-  max-width: 1025px;
-  margin: auto;
-  width: 100%;
-  padding: 0 5px 0 0 !important;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
 
 .navbar-brand {
-  display: flex;
-  align-items: center;
   font-weight: 600;
   margin-left: 10px;
   color: var(--main-white) !important;
@@ -37,10 +29,8 @@
 .navbar-main {
   display: flex;
   justify-content: center;
-  font-size: 1rem;
-  padding: 0;
   flex-grow: 1; /* Allow the items to occupy the available space */
-
+  font-size: 1.25rem;
 }
 
 .nav-link {
@@ -57,13 +47,10 @@
 /* When screensize is small */
 @media (max-width: 700px) {
   .navbar-main {
-    background-color: var(--main-green);
     position: fixed;
     bottom: 0;
     width: 100%;
-    padding: 0 !important;
-    display: flex;
-    justify-content: space-evenly;
+    background-color: var(--main-green);
   }
   .navbar-profile {
     flex-grow: 1;
@@ -75,21 +62,20 @@
 .navbar-profile {
   display: flex;
   justify-content: flex-end;
-  color: black;
   margin-right: 10px;
 }
 
 .custom-nav-dropdown .dropdown-item:hover,
 .custom-nav-dropdown .dropdown-item:focus {
   background-color: var(--main-green);
-
 }
 
 .App {
   margin: auto;
-  margin-top: 46px;
+  margin-top: 63.78px;
   margin-bottom: 63.78px;
-  max-height: 90vh;
+
+  min-height: 91vh;
   max-width: 1025px;
 
   display: grid;
@@ -98,7 +84,7 @@
 }
 
 .map-container {
-  max-height: 47vh;
+  max-height: 45.5vh;
   height: 100%;
   width: 100%;
 }
@@ -111,7 +97,7 @@
 .list-container {
   display: flex;
   flex-direction: column;
-  max-height: 47vh;
+  max-height: 45.5vh;
   width: 100%;
 }
 
@@ -122,10 +108,10 @@
 
 .expense-date-title {
   background-color: var(--main-dark-gray);
-  padding: 5px 0px 5px 15px;
+  padding: 5px 0px 5px 20px;
   color: var(--main-white);
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 .custom-checkbox .form-check-input:checked {
@@ -142,9 +128,9 @@
 }
 
 .welcome-container {
-  max-height: 47svh;
+  max-height: 45.5svh;
   max-width: 1025px;
-  font-size: 1rem;
+  font-size: 1.25rem;
   padding: 10px;
 
   color: black;
@@ -158,11 +144,12 @@
 
 .temporary-box {
   margin: auto;
-  margin-top: 46px;
+  margin-top: 63.78px;
   margin-bottom: 63.78px;
-  min-height: 94svh;
+  min-height: 91svh;
+  /* max-height: 45.5svh; */
   max-width: 1025px;
-  font-size: 1rem;
+  font-size: 1.25rem;
 
   color: black;
   background-color: white;
@@ -182,7 +169,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0px;
   padding: 0 10px;
 }
 
@@ -201,7 +187,7 @@
 
 .card-text {
   display: flex;
-
+  /* justify-content: space-between; */
   align-items: center;
   text-align: "left";
 }
@@ -213,7 +199,7 @@
 
 .profile-container {
   margin: auto;
-  margin-top: 46px;
+  margin-top: 100px;
   max-width: 1025px;
   display: flex;
   justify-content: center;
@@ -232,7 +218,7 @@
 
 .dashboard-container {
   margin: auto;
-  margin-top: 46px;
+  margin-top: 100px;
 
   display: grid;
   grid-template-columns: 1fr;
@@ -255,8 +241,8 @@
 }
 .reset-container {
   margin: auto;
-  margin-top: 46px;
-  max-height: 47svh;
+  margin-top: 63.78px;
+  max-height: 45.5svh;
   max-width: 1025px;
   font-size: 1rem;
 
@@ -285,45 +271,44 @@
   .App {
     grid-template-columns: 1.5fr 1fr;
     grid-template-rows: 1fr;
-    min-height: 94svh;
   }
   .map-container {
     height: 100%;
-    min-height: 94svh;
+    max-height: 91vh;
   }
   .list-container {
     height: 100%;
-    min-height: 94svh;
+    max-height: 91vh;
   }
   .welcome-container {
     height: 100%;
-    max-height: 94vh;
+    max-height: 91vh;
   }
   .temporary-box {
     height: 100%;
-    min-height: 94vh;
+    min-height: 91vh;
   }
   .reset-container {
     height: 100%;
-    min-height: 94vh;
+    min-height: 91vh;
   }
   .profile-container {
     height: 100%;
-    min-height: 94vh;
+    min-height: 91vh;
   }
   .category-container {
     height: 100%;
-    min-height: 94vh;
+    min-height: 91vh;
   }
   .dashboard-container {
     height: 100%;
-    min-height: 94vh;
+    min-height: 91vh;
   }
 }
 
 .category-container {
   margin: auto;
-  margin-top: 46px;
+  margin-top: 100px;
   max-width: 1025px;
 
   display: flex;
@@ -344,7 +329,7 @@
 @media (max-width: 600px) {
   .category-container {
     margin: auto;
-    margin-top: 46px;
+    margin-top: 100px;
     max-width: 600px;
   }
 
@@ -367,12 +352,9 @@
 
 .add-button,
 .add-button-big {
-  background-color: #8ce73b !important;
-  border-color: #8ce73b !important;
-  color: black !important;
+  background-color: var(--main-green) !important;
+  border-color: var(--main-green) !important;
 }
-
-// var(--main-green)
 
 .add-button-big {
   margin-bottom: 5px;
@@ -420,9 +402,9 @@
 
 .signup-container {
   margin: auto;
-  margin-top: 46px;
+  margin-top: 63.78px;
   margin-bottom: 63.78px;
-  min-height: 94vh;
+  min-height: 91vh;
 
   display: flex;
   flex-direction: column;
