@@ -346,6 +346,8 @@ export default function App() {
               <Nav.Link as={Link} to="/mapexpenses">
                 Expenses
               </Nav.Link>
+            </Nav>
+            <Nav className="top-nav">
               {uid ? (
                 <Nav.Link as={Link} to="/dashboard">
                   Dashboard
