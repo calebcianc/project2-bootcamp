@@ -259,14 +259,15 @@
   .App {
     grid-template-columns: 1.5fr 1fr;
     grid-template-rows: 1fr;
+    min-height: 94svh;
   }
   .map-container {
     height: 100%;
-    max-height: 100vh;
+    min-height: 94svh;
   }
   .list-container {
     height: 100%;
-    max-height: 94vh;
+    min-height: 94svh;
   }
   .welcome-container {
     height: 100%;
