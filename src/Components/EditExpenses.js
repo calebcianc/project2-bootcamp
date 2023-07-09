@@ -45,6 +45,7 @@ export default function EditExpenses({
   const [address, setAddress] = useState("");
   const [receiptFile, setReceiptFile] = useState("");
   const [receiptFileValue, setReceiptFileValue] = useState("");
+
   // Get lat and lng coordinates on 'look up' button press
   const getLatLng = () =>
     Geocode.fromAddress(address, process.env.REACT_APP_API_KEY).then(
@@ -66,22 +67,15 @@ export default function EditExpenses({
     setReceiptFile("");
     setReceiptFileValue("");
   };
+
   const handleShow = () => {
     setShow(true);
   };
 
-  // console.log("expensesCategory in edit", expense.id);
-
   // Update data in db
   const handleUpdate = (e) => {
     e.preventDefault();
-    // console.log("category:", category);
-    // console.log(currency);
-    // console.log(amount);
-    // console.log(description);
-    // console.log(date);
 
-    // Get ref key
     const expRef = ref(
       realTimeDatabase,
       `${DB_EXPENSES_FOLDER_NAME}/${uid}/${expense.id}`
@@ -291,11 +285,11 @@ export default function EditExpenses({
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button className="close-button" onClick={handleClose}>
             Close
           </Button>
           <Button
-            variant="primary"
+            className="add-button"
             onClick={handleUpdate}
             disabled={category === "" || amount === 0}
           >

@@ -3,7 +3,7 @@ import { Card, Collapse } from "react-bootstrap";
 
 export default function ExpensesByCategory({ filteredExpenses }) {
   const [openCardIndex, setOpenCardIndex] = useState(null);
-  console.log("filteredExpenses:", filteredExpenses);
+
   const toggleCollapse = (index) => {
     if (openCardIndex === index) {
       setOpenCardIndex(null); // if it's already open, close it
@@ -16,7 +16,7 @@ export default function ExpensesByCategory({ filteredExpenses }) {
     (acc[expense.category] = acc[expense.category] || []).push(expense);
     return acc;
   }, {});
-  console.log("expensesByCategory", expensesByCategory);
+
   return (
     /*This component maps through each category of expenses and creates a Card for each category. The Card will show the total amount of expenses for that category and will expand to show each individual expense when clicked. */
     <div className="container mt-4" style={{ width: "500px" }}>
