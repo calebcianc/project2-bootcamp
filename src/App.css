@@ -6,7 +6,7 @@
 :root {
   --main-white: #ffffff;
   --main-gray: rgb(202, 200, 200);
-  --main-green: #2d7248;
+  --main-green: whitesmoke;
   --main-dark-gray: grey;
 }
 /* burlywood; */
@@ -18,39 +18,51 @@
   border: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
+  max-width: 1025px;
+  margin: auto;
+  width: 100%;
+  padding: 0 5px 0 0 !important;
 }
 
 .navbar-brand {
+  display: flex;
+  align-items: center;
   font-weight: 600;
 }
 
 .navbar-main {
   display: flex;
   justify-content: center;
-  font-size: 1.25rem;
+  font-size: 1rem;
+  padding: 0;
 }
 
 /* When screensize is small */
 @media (max-width: 700px) {
   .navbar-main {
+    background-color: var(--main-green);
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: var(--main-green);
+    padding: 0 !important;
+
+    display: flex;
+    justify-content: space-between;
   }
 }
 
 .navbar-profile {
   display: flex;
   justify-content: flex-end;
+  color: black;
 }
 
 .App {
   margin: auto;
-  margin-top: 63.78px;
+  margin-top: 46px;
   margin-bottom: 63.78px;
 
-  min-height: 91vh;
+  min-height: 94vh;
   max-width: 1025px;
 
   display: grid;
@@ -59,7 +71,7 @@
 }
 
 .map-container {
-  max-height: 45.5vh;
+  max-height: 47vh;
   height: 100%;
   width: 100%;
 }
@@ -72,7 +84,7 @@
 .list-container {
   display: flex; /* Use flexbox to align items */
   flex-direction: column;
-  max-height: 45.5vh;
+  max-height: 47vh;
   width: 100%;
 }
 
@@ -83,10 +95,10 @@
 
 .expense-date-title {
   background-color: var(--main-dark-gray);
-  padding: 5px 0px 5px 20px;
+  padding: 5px 0px 5px 15px;
   color: var(--main-white);
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .custom-checkbox .form-check-input:checked {
@@ -103,9 +115,9 @@
 }
 
 .welcome-container {
-  max-height: 45.5svh;
+  max-height: 47svh;
   max-width: 1025px;
-  font-size: 1.25rem;
+  font-size: 1rem;
   padding: 10px;
 
   color: black;
@@ -119,12 +131,12 @@
 
 .temporary-box {
   margin: auto;
-  margin-top: 63.78px;
+  margin-top: 46px;
   margin-bottom: 63.78px;
-  min-height: 91svh;
-  /* max-height: 45.5svh; */
+  min-height: 94svh;
+  /* max-height: 47svh; */
   max-width: 1025px;
-  font-size: 1.25rem;
+  font-size: 1rem;
 
   color: black;
   background-color: white;
@@ -144,6 +156,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 0px;
   padding: 0 10px;
 }
 
@@ -174,7 +187,7 @@
 
 .profile-container {
   margin: auto;
-  margin-top: 100px;
+  margin-top: 46px;
   max-width: 1025px;
   display: flex;
   justify-content: center;
@@ -193,7 +206,7 @@
 
 .dashboard-container {
   margin: auto;
-  margin-top: 63.78px;
+  margin-top: 46px;
 
   display: grid;
   grid-template-columns: 1fr;
@@ -216,8 +229,8 @@
 }
 .reset-container {
   margin: auto;
-  margin-top: 63.78px;
-  max-height: 45.5svh;
+  margin-top: 46px;
+  max-height: 47svh;
   max-width: 1025px;
   font-size: 1rem;
 
@@ -249,41 +262,41 @@
   }
   .map-container {
     height: 100%;
-    max-height: 91vh;
+    max-height: 100vh;
   }
   .list-container {
     height: 100%;
-    max-height: 91vh;
+    max-height: 94vh;
   }
   .welcome-container {
     height: 100%;
-    max-height: 91vh;
+    max-height: 94vh;
   }
   .temporary-box {
     height: 100%;
-    min-height: 91vh;
+    min-height: 94vh;
   }
   .reset-container {
     height: 100%;
-    min-height: 91vh;
+    min-height: 94vh;
   }
   .profile-container {
     height: 100%;
-    min-height: 91vh;
+    min-height: 94vh;
   }
   .category-container {
     height: 100%;
-    min-height: 91vh;
+    min-height: 94vh;
   }
   .dashboard-container {
     height: 100%;
-    min-height: 91vh;
+    min-height: 94vh;
   }
 }
 
 .category-container {
   margin: auto;
-  margin-top: 100px;
+  margin-top: 46px;
   max-width: 1025px;
 
   display: flex;
@@ -304,7 +317,7 @@
 @media (max-width: 600px) {
   .category-container {
     margin: auto;
-    margin-top: 100px;
+    margin-top: 46px;
     max-width: 600px;
   }
 
@@ -325,9 +338,9 @@
 }
 
 .add-button {
-  background-color: var(--main-green) !important;
+  background-color: var(--main-dark-gray) !important;
   border-color: var(--main-green) !important;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .close-button {
@@ -372,9 +385,9 @@
 
 .signup-container {
   margin: auto;
-  margin-top: 63.78px;
+  margin-top: 46px;
   margin-bottom: 63.78px;
-  min-height: 91vh;
+  min-height: 94vh;
 
   display: flex;
   flex-direction: column;

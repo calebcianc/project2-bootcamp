@@ -322,14 +322,20 @@ export default function App() {
   return (
     <>
       <Navbar fixed="top" className="navbar-container">
-        <Container>
+        <Container
+          style={{
+            margin: 0,
+            padding: 0,
+          }}
+        >
           <Container className="navbar-container">
             <Navbar.Brand as={Link} to="/mapexpenses">
               <img
-                alt="Money Stack Emoji"
-                src="https://em-content.zobj.net/thumbs/240/apple/354/dollar-banknote_1f4b5.png"
+                alt="DollarDirection"
+                src="https://i.imgur.com/6LTVryw.jpg"
                 width="30"
                 height="30"
+                style={{ margin: "0 10px" }} // Add margin to the right of the image
                 // className="d-inline-block align-top"
               />{" "}
               Dollar Direction
@@ -379,7 +385,7 @@ export default function App() {
                       My Account
                     </NavDropdown.Item>
                     <NavDropdown.Item href="/category">
-                      My Category
+                      My Categories
                     </NavDropdown.Item>
                     <NavDropdown.Item
                       onClick={() => {

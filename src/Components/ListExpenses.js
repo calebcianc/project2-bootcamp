@@ -102,7 +102,7 @@ export default function ListExpenses({
   return (
     <div className="list-container">
       <div className="card-header">
-        <div className="mini-navbar" style={{ padding: "0 15px" }}>
+        <div className="mini-navbar" style={{ padding: "0 10px" }}>
           <div id="display-currency">
             <DisplayCurrency
               displayCurrency={displayCurrency}
@@ -116,7 +116,7 @@ export default function ListExpenses({
             style={{
               display: "flex",
               justifyContent: "space-around",
-              padding: "10px",
+              padding: "5px",
               fontSize: "1.5rem",
             }}
           >
