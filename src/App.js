@@ -473,8 +473,6 @@ export default function App() {
               </div>
             ) : (
               <Dashboard
-                isLoggedIn={isLoggedIn}
-                uid={uid}
                 expensesCategory={expensesCategory}
                 categoriesData={categoriesData}
               />
