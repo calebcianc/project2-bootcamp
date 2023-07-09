@@ -23,6 +23,7 @@
 .navbar-brand {
   font-weight: 600;
   margin-left: 10px;
+  color: var(--main-white) !important;
 }
 
 .navbar-main {
@@ -30,6 +31,17 @@
   justify-content: center;
   flex-grow: 1; /* Allow the items to occupy the available space */
   font-size: 1.25rem;
+}
+
+.nav-link {
+  color: var(--main-white) !important;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* When screensize is small */
