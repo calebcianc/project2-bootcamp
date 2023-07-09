@@ -139,7 +139,7 @@ export default function AllExpenses({
                                         borderRadius: "75%",
                                         width: "3rem",
                                         height: "3rem",
-                                        fontSize: "1.5rem",
+                                        fontSize: "1.6rem",
                                         backgroundColor: expense.color,
                                       }}
                                     >

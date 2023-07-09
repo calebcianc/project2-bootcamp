@@ -72,7 +72,7 @@ export default function ListExpenses({
     );
 
     // update the totalAmount state. use toFixed(2) to show 2 dp even when there's only 1 decimal place.
-    setTotalAmount(calculatedTotalAmount.toFixed(2));
+    setTotalAmount(formatter.format(calculatedTotalAmount));
   }, [filters, expensesCategory]);
 
   // Pan to latest expense location whenever there's a change in expenses
