@@ -10,20 +10,25 @@
   --main-dark-gray: grey;
 }
 
-.navbar-container {
+.navbar-background {
   background-color: var(--main-green);
   border: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navbar-brand {
   font-weight: 600;
+  margin-left: 10px;
 }
 
 .navbar-main {
   display: flex;
   justify-content: center;
+  flex-grow: 1; /* Allow the items to occupy the available space */
   font-size: 1.25rem;
 }
 
@@ -35,11 +40,17 @@
     width: 100%;
     background-color: var(--main-green);
   }
+  .navbar-profile {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end; /* Move the profile to the right */
+  }
 }
 
 .navbar-profile {
   display: flex;
   justify-content: flex-end;
+  margin-right: 10px;
 }
 
 .App {
@@ -322,16 +333,20 @@
   text-align: left;
 }
 
-.add-button {
+.add-button,
+.add-button-big {
   background-color: var(--main-green) !important;
   border-color: var(--main-green) !important;
-  margin-bottom: 10px;
+}
+
+.add-button-big {
+  margin-bottom: 5px;
+  width: 100%;
 }
 
 .close-button {
   background-color: var(--main-gray) !important;
   border-color: var(--main-green) !important;
-  margin-bottom: 10px;
 }
 
 .dashboard-view-buttons-all {

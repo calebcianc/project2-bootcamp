@@ -321,95 +321,82 @@ export default function App() {
 
   return (
     <>
-      <Navbar fixed="top" className="navbar-container">
-        <Container>
-          <Container className="navbar-container">
-            <Navbar.Brand as={Link} to="/mapexpenses">
-              <img
-                alt="Money Stack Emoji"
-                src="https://em-content.zobj.net/thumbs/240/apple/354/dollar-banknote_1f4b5.png"
-                width="30"
-                height="30"
-                // className="d-inline-block align-top"
-              />{" "}
-              Dollar Direction
-            </Navbar.Brand>
-          </Container>
-          <Container className="navbar-main">
-            <Nav className="top-nav">
-              <Nav.Link as={Link} to="/mapexpenses">
-                Expenses
-              </Nav.Link>
-              {uid ? (
-                <Nav.Link as={Link} to="/dashboard">
-                  Dashboard
-                </Nav.Link>
-              ) : null}
-            </Nav>
-          </Container>
-          <Container className="navbar-profile">
-            <Nav>
-              <NavDropdown
-                title={
-                  profilePhotoURL ? (
-                    <>
-                      <img
-                        className="rounded-circle"
-                        src={profilePhotoURL}
-                        alt="user"
-                        width="30"
-                        height="30"
-                      />{" "}
-                      {userData.displayName}
-                    </>
-                  ) : (
-                    <img
-                      src={patchQuestionFillSvg}
-                      alt=""
-                      width="30"
-                      height="30"
-                    />
-                  )
-                }
-                id="basic-nav-dropdown"
-              >
-                {isLoggedIn ? (
-                  <>
-                    <NavDropdown.Item href="/profile">
-                      My Account
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="/category">
-                      My Category
-                    </NavDropdown.Item>
-                    <NavDropdown.Item
-                      onClick={() => {
-                        signOut(auth)
-                          .then(() => {
-                            setProfilePhotoURL("");
-                            setUid("");
-                            navigate("/mapexpenses");
-                            setGroupedExpenses([]);
-                          })
-                          .catch((error) => {
-                            console.error(error);
-                          });
-                      }}
-                    >
-                      Log Out
-                    </NavDropdown.Item>
-                  </>
-                ) : (
-                  <>
-                    <NavDropdown.Item href="/authform">
-                      Sign In
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="/signup">Sign Up</NavDropdown.Item>
-                  </>
-                )}
-              </NavDropdown>
-            </Nav>
-          </Container>
-        </Container>
+      <Navbar fixed="top" className="navbar-background">
+        {/* <Container> */}
+        <Navbar.Brand className="navbar-brand" as={Link} to="/mapexpenses">
+          <img
+            alt="Money Stack Emoji"
+            src="https://em-content.zobj.net/thumbs/240/apple/354/dollar-banknote_1f4b5.png"
+            width="30"
+            height="30"
+            // className="d-inline-block align-top"
+          />{" "}
+          Dollar Direction
+        </Navbar.Brand>
+        {/* </Container> */}
+
+        <Nav className="navbar-main">
+          <Nav.Link as={Link} to="/mapexpenses">
+            Expenses
+          </Nav.Link>
+          {uid ? (
+            <Nav.Link as={Link} to="/dashboard">
+              Dashboard
+            </Nav.Link>
+          ) : null}
+        </Nav>
+
+        <Nav className="navbar-profile">
+          <NavDropdown
+            title={
+              profilePhotoURL ? (
+                <>
+                  <img
+                    className="rounded-circle"
+                    src={profilePhotoURL}
+                    alt="user"
+                    width="30"
+                    height="30"
+                  />{" "}
+                  {userData.displayName}
+                </>
+              ) : (
+                <img src={patchQuestionFillSvg} alt="" width="30" height="30" />
+              )
+            }
+            id="basic-nav-dropdown"
+          >
+            {isLoggedIn ? (
+              <>
+                <NavDropdown.Item href="/profile">My Account</NavDropdown.Item>
+                <NavDropdown.Item href="/category">
+                  My Category
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  onClick={() => {
+                    signOut(auth)
+                      .then(() => {
+                        setProfilePhotoURL("");
+                        setUid("");
+                        navigate("/mapexpenses");
+                        setGroupedExpenses([]);
+                      })
+                      .catch((error) => {
+                        console.error(error);
+                      });
+                  }}
+                >
+                  Log Out
+                </NavDropdown.Item>
+              </>
+            ) : (
+              <>
+                <NavDropdown.Item href="/authform">Sign In</NavDropdown.Item>
+                <NavDropdown.Item href="/signup">Sign Up</NavDropdown.Item>
+              </>
+            )}
+          </NavDropdown>
+        </Nav>
       </Navbar>
 
       <Routes>

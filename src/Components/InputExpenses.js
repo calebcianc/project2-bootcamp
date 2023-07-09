@@ -131,16 +131,14 @@ export default function InputExpenses({
 
   return (
     <div>
-      <div>
-        <Button
-          className="add-button"
-          onClick={handleShow}
-          title="Click to add new expenses"
-          style={{ width: "100%" }}
-        >
-          + Add Expense
-        </Button>
-      </div>
+      <Button
+        className="add-button-big"
+        onClick={handleShow}
+        title="Click to add new expenses"
+      >
+        + Add Expense
+      </Button>
+
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Input Expenses</Modal.Title>
