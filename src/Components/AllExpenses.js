@@ -106,7 +106,7 @@ export default function AllExpenses({
                         }
                       >
                         <Card onClick={() => handleOnSelect(expense)}>
-                          <Card.Body>
+                          <Card.Body style={{ padding: "5px 15px" }}>
                             <div className="card-content">
                               {/* Additional div wrapper needed to keep the category icon circle round */}
                               <div
@@ -166,23 +166,25 @@ export default function AllExpenses({
                                   )}
                                 </div>
                                 <div>
-                                  <Card.Subtitle>
+                                  <Card.Subtitle style={{ marginTop: "0px" }}>
                                     {expense.category}
                                   </Card.Subtitle>
-                                  <Card.Text className="mb-2 text-muted">
+                                  <Card.Text
+                                    className="text-muted"
+                                    style={{ marginBottom: "0px" }}
+                                  >
                                     {/* Show description if available */}
-                                    {expense.description !== "-" ? (
-                                      <>
-                                        {expense.description}
-                                        <br />
-                                      </>
-                                    ) : null}
+                                    {expense.description !== "-"
+                                      ? expense.description
+                                      : null}
+                                  </Card.Text>
+                                  <Card.Text className="text-muted ">
                                     {/* Display displayCurrency+Amount, otherwise show input currency+amount */}
-                                    {expense.displayCurrency ||
-                                      expense.currency}
-                                    {formatter.format(
-                                      expense.displayAmount || expense.amount
-                                    )}
+                                    {`${
+                                      expense.displayCurrency
+                                    } ${formatter.format(
+                                      expense.displayAmount
+                                    )}`}
                                     {/* If the displayCurrency is different from the input currency, show the input currency and amount */}
                                     {expense.displayCurrency !==
                                     expense.currency
