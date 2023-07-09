@@ -33,7 +33,6 @@ export default function ListExpenses({
 }) {
   const [showModal, setShowModal] = useState(false);
   const [selectedExpense, setSelectedExpense] = useState(null);
-  const highlightedCardRef = useRef(null);
   const [filters, setFilters] = useState({
     category: null,
     startDate: null,
@@ -100,16 +99,6 @@ export default function ListExpenses({
 
     fetchAndPanToLatestLocation();
   }, [expensesCategory, groupedExpenses]);
-
-  // useEffect to cause highlighted card to scroll into view
-  useEffect(() => {
-    if (highlightedCardRef.current) {
-      highlightedCardRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-      });
-    }
-  }, [isHighlighted]);
 
   return (
     <div className="list-container">

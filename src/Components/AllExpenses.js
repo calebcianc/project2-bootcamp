@@ -33,6 +33,16 @@ export default function AllExpenses({
   let yesterday = new Date();
   yesterday.setDate(today.getDate() - 1);
 
+  // useEffect to cause highlighted card to scroll into view
+  useEffect(() => {
+    if (highlightedCardRef.current) {
+      highlightedCardRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
+    }
+  }, [isHighlighted]);
+
   // Triggered when user checks box for expense for export; adds expense id to state
   const handleCheckboxChange = (data, id) => {
     setSelectedExpenses((prev) => {
