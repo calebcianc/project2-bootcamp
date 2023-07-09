@@ -9,9 +9,6 @@ export default function PasswordResetForm() {
   const [email, setEmail] = useState("");
   const [resetSent, setResetSent] = useState(false);
   const [error, setError] = useState("");
-  const mainColor = getComputedStyle(document.documentElement)
-    .getPropertyValue("--main-green")
-    .trim();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -61,7 +58,7 @@ export default function PasswordResetForm() {
           </div>
         )}
         <div className="text-center" style={{ marginTop: "5px" }}>
-          <Link to="/authform" style={{ color: mainColor }}>
+          <Link to="/authform" style={{ color: "var(--main-green)" }}>
             Remembered your password? Sign In here!
           </Link>
         </div>

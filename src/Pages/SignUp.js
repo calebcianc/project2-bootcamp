@@ -36,9 +36,6 @@ export default function SignUp({
   const [validated, setValidated] = useState(false);
   const navigate = useNavigate();
   const [validationError, setValidationError] = useState(false);
-  const mainColor = getComputedStyle(document.documentElement)
-    .getPropertyValue("--main-green")
-    .trim();
 
   const signUp = async (e) => {
     e.preventDefault();
@@ -237,7 +234,7 @@ export default function SignUp({
                 <GoogleButton />
 
                 <div className="text-left" style={{ marginTop: "5px" }}>
-                  <Link to="/authform" style={{ color: mainColor }}>
+                  <Link to="/authform" style={{ color: "var(--main-green)" }}>
                     Already have an account? Sign In here!
                   </Link>
                 </div>
