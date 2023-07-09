@@ -410,3 +410,13 @@
   display: flex;
   flex-direction: column;
 }
+
+.support-container {
+  min-height: 91vh;
+  margin: auto;
+  margin-top: 100px;
+  max-width: 1025px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
+}

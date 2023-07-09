@@ -357,7 +357,7 @@ export default function Dashboard({ expensesCategory, categoriesData }) {
           </p>
           <p>
             <strong>Yearly:</strong> Shows the total expenses for each year for
-            the ;ast 3 years.
+            the last 3 years.
           </p>
         </Modal.Body>
         <Modal.Footer>
