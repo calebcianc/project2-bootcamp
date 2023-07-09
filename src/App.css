@@ -243,20 +243,26 @@
   max-width: 1025px;
 
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  /* gap: 20px; */
+}
+
+.dashboard-header {
+  text-align: center;
+  height: 6svh;
 }
 
 .dashboard-main {
   margin: auto;
   align-items: center;
   text-align: center;
-  min-height: 94svh;
+  height: 50svh;
 }
 
 .dashboard-expenses {
-  margin-top: 18svh;
-  width: 100%;
+  height: 34svh;
+  overflow-y: auto;
 }
 
 .chart-container {
@@ -265,7 +271,6 @@
   align-items: center;
   width: 100%;
   height: 300px;
-  /* margin-bottom: 20px; */
 }
 
 .reset-container {
@@ -297,6 +302,34 @@
 
 /* if viewport width is greater than 700px */
 @media (min-width: 700px) {
+  .dashboard-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  .dashboard-header {
+    grid-column: 1 / -1;
+  }
+
+  .chart-container {
+    height: 300px;
+  }
+
+  .chart-wrapper {
+    height: 300px;
+  }
+
+  .dashboard-main {
+    grid-column: 1;
+
+    height: 88svh;
+  }
+
+  .dashboard-expenses {
+    grid-column: 2;
+    height: 88svh;
+  }
+
   .App {
     grid-template-columns: 1.5fr 1fr;
     grid-template-rows: 1fr;
@@ -346,14 +379,14 @@
 }
 
 .category-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  overflow-y: auto;
 }
 
 .category-card {
-  width: 18rem;
-  margin-bottom: 1rem;
+  width: 100%;
 }
 
 @media (max-width: 600px) {
@@ -361,11 +394,11 @@
     margin: auto;
     margin-top: 46px;
     max-width: 600px;
+    height: 90svh;
   }
 
   .category-list {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: 1fr;
   }
 
   .category-card {

@@ -205,8 +205,10 @@ export default function Dashboard({ expensesCategory, categoriesData }) {
 
   return (
     <div className="dashboard-container">
-      <div className="dashboard-main">
+      <div className="dashboard-header">
         <h1>Total spending </h1>
+      </div>
+      <div className="dashboard-main">
         <div className="dashboard-view-buttons-all ">{viewButtons}</div>
         <Tabs
           activeKey={activeKey}

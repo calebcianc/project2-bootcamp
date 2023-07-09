@@ -19,7 +19,7 @@ export default function ExpensesByCategory({ filteredExpenses }) {
 
   return (
     /*This component maps through each category of expenses and creates a Card for each category. The Card will show the total amount of expenses for that category and will expand to show each individual expense when clicked. */
-    <div className="container mt-4" style={{ maxWidth: "500px" }}>
+    <div className="container mt-4" style={{ width: "500px" }}>
       {Object.entries(expensesByCategory).map(([category, expenses], index) => {
         const total = expenses
           .reduce((sum, expense) => sum + parseFloat(expense.displayAmount), 0)
@@ -76,7 +76,7 @@ export default function ExpensesByCategory({ filteredExpenses }) {
                         {expense.displayCurrency}{" "}
                         {parseFloat(expense.displayAmount).toFixed(2)}
                         {" ("}
-                        {expense.currency} {expense.amount})
+                        {expense.currency} {expense.amount}
                         <br />
                         {expense.description}
                       </Card.Text>
