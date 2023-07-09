@@ -180,11 +180,11 @@ export default function AllExpenses({
                                   </Card.Text>
                                   <Card.Text className="text-muted ">
                                     {/* Display displayCurrency+Amount, otherwise show input currency+amount */}
-                                    {expense.displayCurrency ||
-                                      expense.currency}
-                                    {formatter.format(
-                                      expense.displayAmount || expense.amount
-                                    )}
+                                    {`${
+                                      expense.displayCurrency
+                                    } ${formatter.format(
+                                      expense.displayAmount
+                                    )}`}
                                     {/* If the displayCurrency is different from the input currency, show the input currency and amount */}
                                     {expense.displayCurrency !==
                                     expense.currency
