@@ -213,7 +213,7 @@ export default function ListExpenses({
           )}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={closeReceiptModal}>
+          <Button className="close-button" onClick={closeReceiptModal}>
             Close
           </Button>
         </Modal.Footer>

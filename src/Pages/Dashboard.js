@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   XAxis,
   YAxis,
@@ -17,6 +17,8 @@ export default function Dashboard({ expensesCategory, categoriesData }) {
   const [focusBar, setFocusBar] = useState(null);
   const [view, setView] = useState("daily");
   const [activeKey, setActiveKey] = useState("bargraph");
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
   const mainColor = getComputedStyle(document.documentElement)
     .getPropertyValue("--main-green")
     .trim();
@@ -49,6 +51,16 @@ export default function Dashboard({ expensesCategory, categoriesData }) {
     }
     return { startDate, endDate };
   };
+
+  // Update the startDate and endDate using useState and the calculateStartAndEndDates function
+  useEffect(() => {
+    const { startDate, endDate } = calculateStartAndEndDates(
+      expensesCategory,
+      view
+    );
+    setStartDate(startDate);
+    setEndDate(endDate);
+  }, [expensesCategory, view]);
 
   // Function to generate a list of all possible period between start and end date
   const generateDatesInRange = (startDate, endDate, view) => {
@@ -110,11 +122,6 @@ export default function Dashboard({ expensesCategory, categoriesData }) {
     return { allPeriods, displayAmountByPeriod };
   };
 
-  // Call calculateStartAndEndDates function to get startDate and endDate
-  const { startDate, endDate } = calculateStartAndEndDates(
-    expensesCategory,
-    view
-  );
   // Call calculateDisplayAmount function with the selected view
   const { allPeriods, displayAmountByPeriod } = calculateDisplayAmount(
     expensesCategory,
@@ -136,7 +143,7 @@ export default function Dashboard({ expensesCategory, categoriesData }) {
     if (active) {
       return (
         <div className={"Custom-Tooltip"}>
-          {label}
+          <strong>{label}</strong>
           <br />
           {"Amount: " + payload[0].value}
         </div>
@@ -221,7 +228,12 @@ export default function Dashboard({ expensesCategory, categoriesData }) {
               </span>
             }
           >
-            Title for bargraph
+            {selectedPeriod
+              ? `Expenses for ${selectedPeriod}`
+              : `Expenses from ${startDate
+                  .toISOString()
+                  .slice(0, 10)} to ${endDate.toISOString().slice(0, 10)}`}
+
             <div className="chart-container">
               <div className="chart-wrapper">
                 <BarChart
@@ -282,7 +294,11 @@ export default function Dashboard({ expensesCategory, categoriesData }) {
               </span>
             }
           >
-            Title for pie chart
+            {selectedPeriod
+              ? `Expenses for ${selectedPeriod}`
+              : `Expenses from ${startDate
+                  .toISOString()
+                  .slice(0, 10)} to ${endDate.toISOString().slice(0, 10)}`}
             <div className="chart-container">
               <div className="chart-wrapper">
                 <ExpPieChart
