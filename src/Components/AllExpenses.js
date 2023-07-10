@@ -178,7 +178,7 @@ export default function AllExpenses({
                                   <Card.Subtitle>
                                     {expense.category}
                                   </Card.Subtitle>
-                                  <Card.Text className="mb-2 text-muted">
+                                  <Card.Text className="text-muted">
                                     {/* Show description if available */}
                                     {expense.description !== "-" ? (
                                       <>
