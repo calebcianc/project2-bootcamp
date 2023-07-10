@@ -5,6 +5,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate, Link } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import GoogleButton from "../Components/SignInWithGoogleButton";
+import { Display } from "react-bootstrap-icons";
 
 export default function AuthForm({ isLoggedIn, username }) {
   const [email, setEmail] = useState("");
@@ -40,10 +41,9 @@ export default function AuthForm({ isLoggedIn, username }) {
             <h5>Click on the top navigator to start posting!</h5>
           </div>
         ) : (
-          <div>
-            <div style={{ textAlign: "left" }}>
-              <h1>Sign In</h1>
-            </div>
+          <div style={{ width: "500px" }}>
+            <h1 style={{ marginBottom: "20px" }}>Sign In</h1>
+
             <Row>
               <Col>
                 <Form>
@@ -75,7 +75,7 @@ export default function AuthForm({ isLoggedIn, username }) {
 
                   <Button
                     onClick={signIn}
-                    style={{ width: "40%" }}
+                    style={{ width: "100%" }}
                     className="add-button"
                   >
                     Sign In

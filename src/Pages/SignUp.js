@@ -118,9 +118,9 @@ export default function SignUp({
   };
 
   return (
-    <Container className="signup-container" style={{ maxWidth: "1025px" }}>
+    <Container className="signup-container" style={{ maxWidth: "500px" }}>
       {" "}
-      <h1>Create Account</h1>
+      <h1 style={{ marginBottom: "20px" }}>Create Account</h1>
       {isLoggedIn ? (
         <div>
           <h2>Welcome {displayName}</h2>
@@ -136,7 +136,7 @@ export default function SignUp({
         <Row>
           <Col>
             <Form noValidate validated={validated}>
-              <Form.Group className="mb-3">
+              <Form.Group className="mb-1">
                 <Row>
                   <Col>
                     <Form.Label>First Name</Form.Label>
@@ -164,7 +164,7 @@ export default function SignUp({
                   </Col>
                 </Row>
               </Form.Group>
-              <Form.Group className="mb-3">
+              <Form.Group className="mb-1">
                 <Form.Label>Display Name</Form.Label>
                 <Form.Control
                   type="text"
@@ -177,7 +177,7 @@ export default function SignUp({
                 />
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Group className="mb-1" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
                   type="email"
@@ -198,7 +198,7 @@ export default function SignUp({
                 )}
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Group className="mb-1" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   type="password"
@@ -222,7 +222,7 @@ export default function SignUp({
 
               <Button
                 onClick={signUp}
-                style={{ width: "40%" }}
+                style={{ width: "100%" }}
                 className="add-button"
                 disabled={
                   firstName === "" || lastName === "" || displayName === ""

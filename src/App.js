@@ -326,14 +326,14 @@ export default function App() {
 
   return (
     <div style={{ backgroundColor: "whitesmoke" }}>
-      <Navbar fixed="top" className="navbar-container">
+      <Navbar fixed="top" className="navbar-container" style={{ padding: "0" }}>
         <Container
           style={{
             margin: 0,
             padding: 0,
           }}
         >
-          <Container className="navbar-container">
+          <Container className="navbar-container" style={{ padding: "0" }}>
             <Navbar.Brand as={Link} to="/mapexpenses">
               <img
                 alt="DollarDirection"
@@ -343,7 +343,7 @@ export default function App() {
                 style={{ margin: "0 10px" }} // Add margin to the right of the image
                 // className="d-inline-block align-top"
               />{" "}
-              Dollar Direction
+              <b>Dollar Direction</b>
             </Navbar.Brand>
           </Container>
 

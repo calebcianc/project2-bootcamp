@@ -14,7 +14,6 @@
 
 .navbar-container {
   background-color: whitesmoke;
-  /* var(--main-green) */
   border: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -337,15 +336,15 @@
   }
   .map-container {
     height: 100%;
-    max-height: 91vh;
+    height: 94vh;
   }
   .list-container {
     height: 100%;
-    max-height: 91vh;
+    height: 94vh;
   }
   .welcome-container {
     height: 100%;
-    max-height: 91vh;
+    max-height: 94vh;
   }
   .temporary-box {
     height: 100%;
@@ -467,10 +466,11 @@
 }
 
 .signup-container {
-  max-width: 1025px;
+  max-width: 500px;
   margin: auto;
-  margin-top: 46px;
-  min-height: 94vh;
+  margin-top: 100px;
+  margin-bottom: 0;
+  height: 80vh;
 
   display: flex;
   flex-direction: column;
