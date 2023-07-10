@@ -58,7 +58,12 @@ export default function PasswordResetForm() {
           </div>
         )}
         <div className="text-center" style={{ marginTop: "5px" }}>
-          <Link to="/authform" style={{ color: "var(--main-green)" }}>
+
+          <Link
+            to="/authform"
+            // style={{ color: mainColor }}
+          >
+
             Remembered your password? Sign In here!
           </Link>
         </div>

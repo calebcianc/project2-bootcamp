@@ -90,13 +90,17 @@ export default function App() {
     }
 
     // Check date in DB - if date is today, fetch the rates from DB. If date is not today, fetch rates via API and update DB
-    const dateRef = ref(realTimeDatabase, `${DB_CATEGORY_FOLDER_NAME}/date`);
+    const dateRef = ref(
+      realTimeDatabase,
+      `${DB_EXCHANGERATES_FOLDER_NAME}/date`
+    );
     get(dateRef)
       .then((snapshot) => {
+        console.log(`DB date: ${snapshot.val()}. Today's date is ${today}`);
         if (snapshot.val() === today) {
           const ratesRef = ref(
             realTimeDatabase,
-            `${DB_CATEGORY_FOLDER_NAME}/data`
+            `${DB_EXCHANGERATES_FOLDER_NAME}/data`
           );
           get(ratesRef)
             .then((snapshot) => {
@@ -322,85 +326,110 @@ export default function App() {
 
   return (
     <>
-      <Navbar fixed="top" className="navbar-background">
-        {/* <Container> */}
-        <Navbar.Brand className="navbar-brand" as={Link} to="/mapexpenses">
-          <img
-            alt="Money Stack Emoji"
-            src="https://em-content.zobj.net/thumbs/240/apple/354/dollar-banknote_1f4b5.png"
-            width="30"
-            height="30"
-            // className="d-inline-block align-top"
-          />{" "}
-          Dollar Direction
-        </Navbar.Brand>
-        {/* </Container> */}
 
-        <Nav className="navbar-main">
-          <Nav.Link as={Link} to="/mapexpenses">
-            Expenses
-          </Nav.Link>
-          {uid ? (
-            <Nav.Link as={Link} to="/dashboard">
-              Dashboard
-            </Nav.Link>
-          ) : null}
-        </Nav>
+      <Navbar fixed="top" className="navbar-container">
+        <Container
+          style={{
+            margin: 0,
+            padding: 0,
+          }}
+        >
+          <Container className="navbar-container">
+            <Navbar.Brand as={Link} to="/mapexpenses">
+              <img
+                alt="DollarDirection"
+                src="https://i.imgur.com/6LTVryw.jpg"
+                width="30"
+                height="30"
+                style={{ margin: "0 10px" }} // Add margin to the right of the image
+                // className="d-inline-block align-top"
+              />{" "}
+              Dollar Direction
+            </Navbar.Brand>
+          </Container>
 
-        <Nav className="navbar-profile">
-          <NavDropdown
-            title={
-              profilePhotoURL ? (
-                <>
-                  <img
-                    className="rounded-circle"
-                    src={profilePhotoURL}
-                    alt="user"
-                    width="30"
-                    height="30"
-                  />{" "}
-                  {userData.displayName}
-                </>
-              ) : (
-                <img src={patchQuestionFillSvg} alt="" width="30" height="30" />
-              )
-            }
-            id="basic-nav-dropdown"
-            className="custom-nav-dropdown"
-          >
-            {isLoggedIn ? (
-              <>
-                <NavDropdown.Item href="/profile">My Account</NavDropdown.Item>
-                <NavDropdown.Item href="/category">
-                  My Category
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/support">Support</NavDropdown.Item>
-                <NavDropdown.Item
-                  onClick={() => {
-                    signOut(auth)
-                      .then(() => {
-                        setProfilePhotoURL("");
-                        setUid("");
-                        navigate("/mapexpenses");
-                        setGroupedExpenses([]);
-                      })
-                      .catch((error) => {
-                        console.error(error);
-                      });
-                  }}
-                >
-                  Log Out
-                </NavDropdown.Item>
-              </>
-            ) : (
-              <>
-                <NavDropdown.Item href="/authform">Sign In</NavDropdown.Item>
-                <NavDropdown.Item href="/signup">Sign Up</NavDropdown.Item>
-                <NavDropdown.Item href="/support">Support</NavDropdown.Item>
-              </>
-            )}
-          </NavDropdown>
-        </Nav>
+          <Container className="navbar-main">
+            <Nav className="top-nav">
+              {uid ? (
+                <Nav.Link as={Link} to="/mapexpenses">
+                  Expenses
+                </Nav.Link>
+              ) : null}
+            </Nav>
+            <Nav className="top-nav">
+              {uid ? (
+                <Nav.Link as={Link} to="/dashboard">
+                  Dashboard
+                </Nav.Link>
+              ) : null}
+            </Nav>
+          </Container>
+          <Container className="navbar-profile">
+            <Nav>
+              <NavDropdown
+                title={
+                  profilePhotoURL ? (
+                    <>
+                      <img
+                        className="rounded-circle"
+                        src={profilePhotoURL}
+                        alt="user"
+                        width="30"
+                        height="30"
+                      />{" "}
+                      {userData.displayName}
+                    </>
+                  ) : (
+                    <img
+                      src={patchQuestionFillSvg}
+                      alt=""
+                      width="30"
+                      height="30"
+                    />
+                  )
+                }
+                id="basic-nav-dropdown"
+              >
+                {isLoggedIn ? (
+                  <>
+                    <NavDropdown.Item href="/profile">
+                      My Account
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="/category">
+                      My Categories
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="/support">Support</NavDropdown.Item>
+                    <NavDropdown.Item
+                      onClick={() => {
+                        signOut(auth)
+                          .then(() => {
+                            setProfilePhotoURL("");
+                            setUid("");
+                            navigate("/mapexpenses");
+                            setGroupedExpenses([]);
+                          })
+                          .catch((error) => {
+                            console.error(error);
+                          });
+                      }}
+                    >
+                      Log Out
+                    </NavDropdown.Item>
+                  </>
+                ) : (
+                  <>
+                    <NavDropdown.Item href="/authform">
+                      Sign In
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="/signup">Sign Up</NavDropdown.Item>
+                    <NavDropdown.Item href="/support">Support</NavDropdown.Item>
+                  </>
+                )}
+              </NavDropdown>
+            </Nav>
+          </Container>
+        </Container>
+
       </Navbar>
 
       <Routes>

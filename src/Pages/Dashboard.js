@@ -222,8 +222,9 @@ export default function Dashboard({ expensesCategory, categoriesData }) {
 
   return (
     <div className="dashboard-container">
-      <div className="dashboard-main">
-        <h1>
+
+      <div className="dashboard-header">
+      <h1>
           Total spending
           <sup>
             <Button variant="link" onClick={handleShow}>
@@ -235,6 +236,9 @@ export default function Dashboard({ expensesCategory, categoriesData }) {
             </Button>
           </sup>
         </h1>
+      </div>
+      <div className="dashboard-main">
+
         <div className="dashboard-view-buttons-all ">{viewButtons}</div>
         <Tabs
           activeKey={activeKey}
@@ -338,7 +342,7 @@ export default function Dashboard({ expensesCategory, categoriesData }) {
           </Tab>
         </Tabs>
       </div>
-      <div>
+      <div className="dashboard-expenses">
         <ExpensesByCategory filteredExpenses={filteredExpenses} />
       </div>
 

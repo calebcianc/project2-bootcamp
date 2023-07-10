@@ -118,131 +118,132 @@ export default function SignUp({
   };
 
   return (
-    <>
-      <Container className="signup-container">
-        {" "}
-        <h1>Create Account</h1>
-        {isLoggedIn ? (
-          <div>
-            <h2>Welcome {displayName}</h2>
-            <h5>
-              Click on{" "}
-              <Link to="/mapexpenses" style={{ color: "#deb887" }}>
-                MapExpenses{" "}
-              </Link>
-              to start tracking your expenses!
-            </h5>
-          </div>
-        ) : (
-          <Row>
-            <Col>
-              <Form noValidate validated={validated}>
-                <Form.Group className="mb-3">
-                  <Row>
-                    <Col>
-                      <Form.Label>First Name</Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder=""
-                        value={firstName}
-                        onChange={(e) => {
-                          setFirstName(e.target.value);
-                        }}
-                        required
-                      />
-                    </Col>
-                    <Col>
-                      <Form.Label>Last Name</Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder=""
-                        value={lastName}
-                        onChange={(e) => {
-                          setLastName(e.target.value);
-                        }}
-                        required
-                      />
-                    </Col>
-                  </Row>
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label>Display Name</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder=""
-                    value={displayName}
-                    onChange={(e) => {
-                      setDisplayName(e.target.value);
-                    }}
-                    required
-                  />
-                </Form.Group>
+    <Container className="signup-container">
+      {" "}
+      <h1>Create Account</h1>
+      {isLoggedIn ? (
+        <div>
+          <h2>Welcome {displayName}</h2>
+          <h5>
+            Click on{" "}
+            <Link to="/mapexpenses" style={{ color: "#deb887" }}>
+              MapExpenses{" "}
+            </Link>
+            to start tracking your expenses!
+          </h5>
+        </div>
+      ) : (
+        <Row>
+          <Col>
+            <Form noValidate validated={validated}>
+              <Form.Group className="mb-3">
+                <Row>
+                  <Col>
+                    <Form.Label>First Name</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder=""
+                      value={firstName}
+                      onChange={(e) => {
+                        setFirstName(e.target.value);
+                      }}
+                      required
+                    />
+                  </Col>
+                  <Col>
+                    <Form.Label>Last Name</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder=""
+                      value={lastName}
+                      onChange={(e) => {
+                        setLastName(e.target.value);
+                      }}
+                      required
+                    />
+                  </Col>
+                </Row>
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Display Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder=""
+                  value={displayName}
+                  onChange={(e) => {
+                    setDisplayName(e.target.value);
+                  }}
+                  required
+                />
+              </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Email address</Form.Label>
-                  <Form.Control
-                    type="email"
-                    placeholder=""
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    style={{
-                      borderColor: validationError ? "red" : "",
-                    }}
-                  />
-                  {validationError ? (
-                    <span style={{ color: "red" }}>
-                      Email is already in use
-                    </span>
-                  ) : (
-                    <Form.Text className="text-muted">
-                      A valid email address.
-                    </Form.Text>
-                  )}
-                </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder=""
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  style={{
+                    borderColor: validationError ? "red" : "",
+                  }}
+                />
+                {validationError ? (
+                  <span style={{ color: "red" }}>Email is already in use</span>
+                ) : (
+                  <Form.Text className="text-muted">
+                    A valid email address.
+                  </Form.Text>
+                )}
+              </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control
-                    type="password"
-                    placeholder=""
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  />
-                </Form.Group>
-                <Form.Group controlId="formFile" className="mb-3">
-                  <Form.Label>Upload profile photo (optional)</Form.Label>
-                  <Form.Control
-                    type="file"
-                    value={fileInputValue}
-                    onChange={(e) => {
-                      setFileInputFile(e.target.files[0]);
-                      setFileInputValue(e.target.value);
-                    }}
-                  />
-                </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder=""
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </Form.Group>
+              <Form.Group controlId="formFile" className="mb-3">
+                <Form.Label>Upload profile photo (optional)</Form.Label>
+                <Form.Control
+                  type="file"
+                  value={fileInputValue}
+                  onChange={(e) => {
+                    setFileInputFile(e.target.files[0]);
+                    setFileInputValue(e.target.value);
+                  }}
+                />
+              </Form.Group>
 
-                <Button
-                  onClick={signUp}
-                  style={{ width: "40%" }}
-                  className="add-button"
+              <Button
+                onClick={signUp}
+                style={{ width: "40%" }}
+                className="add-button"
+              >
+                Sign Up
+              </Button>
+
+              <GoogleButton />
+
+
+              <div className="text-left" style={{ marginTop: "5px" }}>
+                <Link
+                  to="/authform"
+                  // style={{ color: mainColor }}
                 >
-                  Sign Up
-                </Button>
+                  Already have an account? Sign In here!
+                </Link>
+              </div>
+            </Form>
+          </Col>
+        </Row>
+      )}
+    </Container>
 
-                <GoogleButton />
-
-                <div className="text-left" style={{ marginTop: "5px" }}>
-                  <Link to="/authform" style={{ color: "var(--main-green)" }}>
-                    Already have an account? Sign In here!
-                  </Link>
-                </div>
-              </Form>
-            </Col>
-          </Row>
-        )}
-      </Container>
-    </>
   );
 }

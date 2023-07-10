@@ -33,6 +33,16 @@ export default function AllExpenses({
   let yesterday = new Date();
   yesterday.setDate(today.getDate() - 1);
 
+  // useEffect to cause highlighted card to scroll into view
+  useEffect(() => {
+    if (highlightedCardRef.current) {
+      highlightedCardRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
+    }
+  }, [isHighlighted]);
+
   // Triggered when user checks box for expense for export; adds expense id to state
   const handleCheckboxChange = (data, id) => {
     setSelectedExpenses((prev) => {
@@ -55,7 +65,7 @@ export default function AllExpenses({
   }, [isLoadingExpenses]);
 
   return (
-    <div>
+    <div className="allExp-container">
       {noExpenses
         ? null
         : // Map through the object of date-grouped expenses
@@ -126,13 +136,12 @@ export default function AllExpenses({
                                         display: "flex",
                                         justifyContent: "center",
                                         alignItems: "center",
-                                        borderRadius: "50%",
+                                        borderRadius: "75%",
                                         width: "3rem",
                                         height: "3rem",
-                                        fontSize: "2rem",
+                                        fontSize: "1.6rem",
                                         backgroundColor: expense.color,
                                       }}
-                                      className="mb-3"
                                     >
                                       <Form.Check
                                         className="custom-checkbox"

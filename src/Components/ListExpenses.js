@@ -33,7 +33,6 @@ export default function ListExpenses({
 }) {
   const [showModal, setShowModal] = useState(false);
   const [selectedExpense, setSelectedExpense] = useState(null);
-  const highlightedCardRef = useRef(null);
   const [filters, setFilters] = useState({
     category: null,
     startDate: null,
@@ -73,7 +72,7 @@ export default function ListExpenses({
     );
 
     // update the totalAmount state. use toFixed(2) to show 2 dp even when there's only 1 decimal place.
-    setTotalAmount(calculatedTotalAmount.toFixed(2));
+    setTotalAmount(formatter.format(calculatedTotalAmount));
   }, [filters, expensesCategory]);
 
   // Pan to latest expense location whenever there's a change in expenses
@@ -100,16 +99,6 @@ export default function ListExpenses({
 
     fetchAndPanToLatestLocation();
   }, [expensesCategory, groupedExpenses]);
-
-  // useEffect to cause highlighted card to scroll into view
-  useEffect(() => {
-    if (highlightedCardRef.current) {
-      highlightedCardRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-      });
-    }
-  }, [isHighlighted]);
 
   return (
     <div className="list-container">
@@ -148,52 +137,58 @@ export default function ListExpenses({
           </div>
         </div>
       </div>
-      <div className="allExp-container">
+      <div
+      // className="allExp-container"
+      >
         {isLoadingExpenses ? (
           <div className="temporary-box">
             <BeatLoader color={"#3dd381"} loading={isLoadingExpenses} />
           </div>
         ) : (
           <div>
-            <InputExpenses
-              uid={uid}
-              mapRef={mapRef}
-              lat={lat}
-              setLat={setLat}
-              lng={lng}
-              setLng={setLng}
-              expensesCategory={expensesCategory}
-              setExpenseCounter={setExpenseCounter}
-              currenciesList={currenciesList}
-              displayCurrency={displayCurrency}
-              categoriesData={categoriesData}
-              exchangeRates={exchangeRates}
-            />
-            <AllExpenses
-              uid={uid}
-              currenciesList={currenciesList}
-              groupedExpenses={groupedExpenses}
-              expensesCategory={expensesCategory}
-              expenseCounter={expenseCounter}
-              setExpenseCounter={setExpenseCounter}
-              isHighlighted={isHighlighted}
-              formatter={formatter}
-              handleOnSelect={handleOnSelect}
-              handleShowReceiptClick={handleShowReceiptClick}
-              handleDeleteExpenses={handleDeleteExpenses}
-              categoriesData={categoriesData}
-              filters={filters}
-              showCheckboxes={showCheckboxes}
-              setShowCheckboxes={setShowCheckboxes}
-              selectedExpenses={selectedExpenses}
-              setSelectedExpenses={setSelectedExpenses}
-              selectedExpensesData={selectedExpensesData}
-              setSelectedExpensesData={setSelectedExpensesData}
-              exchangeRates={exchangeRates}
-              displayCurrency={displayCurrency}
-              isLoadingExpenses={isLoadingExpenses}
-              noExpenses={noExpenses}
-            />
+            <div>
+              <InputExpenses
+                uid={uid}
+                mapRef={mapRef}
+                lat={lat}
+                setLat={setLat}
+                lng={lng}
+                setLng={setLng}
+                expensesCategory={expensesCategory}
+                setExpenseCounter={setExpenseCounter}
+                currenciesList={currenciesList}
+                displayCurrency={displayCurrency}
+                categoriesData={categoriesData}
+                exchangeRates={exchangeRates}
+              />
+            </div>
+            <div className="allExp-container">
+              <AllExpenses
+                uid={uid}
+                currenciesList={currenciesList}
+                groupedExpenses={groupedExpenses}
+                expensesCategory={expensesCategory}
+                expenseCounter={expenseCounter}
+                setExpenseCounter={setExpenseCounter}
+                isHighlighted={isHighlighted}
+                formatter={formatter}
+                handleOnSelect={handleOnSelect}
+                handleShowReceiptClick={handleShowReceiptClick}
+                handleDeleteExpenses={handleDeleteExpenses}
+                categoriesData={categoriesData}
+                filters={filters}
+                showCheckboxes={showCheckboxes}
+                setShowCheckboxes={setShowCheckboxes}
+                selectedExpenses={selectedExpenses}
+                setSelectedExpenses={setSelectedExpenses}
+                selectedExpensesData={selectedExpensesData}
+                setSelectedExpensesData={setSelectedExpensesData}
+                exchangeRates={exchangeRates}
+                displayCurrency={displayCurrency}
+                isLoadingExpenses={isLoadingExpenses}
+                noExpenses={noExpenses}
+              />
+            </div>
           </div>
         )}
       </div>
