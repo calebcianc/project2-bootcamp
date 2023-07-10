@@ -16,11 +16,6 @@
   border: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
-  max-width: 1025px;
-  margin: auto;
-  width: 100%;
-  padding: 0 5px 0 0 !important;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,9 +23,6 @@
 
 .navbar-brand {
   display: flex;
-  font-weight: 600;
-  color: var(--main-white) !important;
-  flex-grow: 1;
 }
 
 .navbar-main {
@@ -40,8 +32,7 @@
   font-size: 1rem;
   padding: 0;
   flex-grow: 0;
-  white-space: nowrap;
-}
+  }
 
 .nav-link {
   color: var(--main-white) !important;
@@ -61,7 +52,6 @@
   padding: 0 !important;
   white-space: nowrap;
   flex-grow: 0;
-  /* margin-right: 10px; */
 }
 
 /* When screensize is small */
@@ -78,10 +68,8 @@
     border-top: 1px solid black;
   }
   .navbar-profile {
-    /* flex-grow: 1; */
     display: flex;
     justify-content: flex-end;
-    /* Move the profile to the right */
   }
 }
 
@@ -93,7 +81,6 @@
 .App {
   margin: auto;
   margin-top: 46px;
-  /* margin-bottom: 63.78px; */
   max-height: 94vh;
   max-width: 1025px;
 
@@ -116,7 +103,7 @@
 .list-container {
   display: flex;
   flex-direction: column;
-  max-height: 47vh;
+  max-height: 45.5vh;
   width: 100%;
 }
 
@@ -128,10 +115,10 @@
 
 .expense-date-title {
   background-color: var(--main-dark-gray);
-  padding: 5px 0px 5px 15px;
+  padding: 5px 0px 5px 20px;
   color: var(--main-white);
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 .custom-checkbox .form-check-input:checked {
@@ -151,8 +138,9 @@
 
 .welcome-container {
   height: 47svh;
+  max-height: 45.5svh;
   max-width: 1025px;
-  font-size: 1rem;
+  font-size: 1.25rem;
   padding: 10px;
 
   color: black;
@@ -166,11 +154,11 @@
 
 .temporary-box {
   margin: auto;
-  margin-top: 46px;
+  margin-top: 63.78px;
   margin-bottom: 63.78px;
-  min-height: 94svh;
+  min-height: 91svh;
   max-width: 1025px;
-  font-size: 1rem;
+  font-size: 1.25rem;
 
   color: black;
   background-color: white;
@@ -209,7 +197,7 @@
 
 .card-text {
   display: flex;
-
+  /* justify-content: space-between; */
   align-items: center;
   text-align: "left";
 }
@@ -222,7 +210,7 @@
 
 .profile-container {
   margin: auto;
-  margin-top: 46px;
+  margin-top: 100px;
   max-width: 1025px;
   display: flex;
   justify-content: center;
@@ -248,7 +236,6 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
-  /* gap: 20px; */
 }
 
 .dashboard-header {
@@ -278,8 +265,8 @@
 
 .reset-container {
   margin: auto;
-  margin-top: 46px;
-  max-height: 47svh;
+  margin-top: 63.78px;
+  max-height: 45.5svh;
   max-width: 1025px;
   font-size: 1rem;
 
@@ -342,45 +329,44 @@
   .App {
     grid-template-columns: 1.5fr 1fr;
     grid-template-rows: 1fr;
-    min-height: 94svh;
   }
   .map-container {
     height: 100%;
-    min-height: 94svh;
+    max-height: 91vh;
   }
   .list-container {
     height: 100%;
-    min-height: 94svh;
+    max-height: 91vh;
   }
   .welcome-container {
     height: 100%;
-    max-height: 94vh;
+    max-height: 91vh;
   }
   .temporary-box {
     height: 100%;
-    min-height: 94vh;
+    min-height: 91vh;
   }
   .reset-container {
     height: 100%;
-    min-height: 94vh;
+    min-height: 91vh;
   }
   .profile-container {
     height: 100%;
-    min-height: 94vh;
+    min-height: 91vh;
   }
   .category-container {
     height: 100%;
-    min-height: 94vh;
+    min-height: 91vh;
   }
   .dashboard-container {
     height: 100%;
-    min-height: 94vh;
+    min-height: 91vh;
   }
 }
 
 .category-container {
   margin: auto;
-  margin-top: 46px;
+  margin-top: 100px;
   max-width: 1025px;
 
   display: flex;
@@ -401,7 +387,7 @@
 @media (max-width: 600px) {
   .category-container {
     margin: auto;
-    margin-top: 46px;
+    margin-top: 100px;
     max-width: 600px;
     height: 90svh;
   }
@@ -424,9 +410,8 @@
 
 .add-button,
 .add-button-big {
-  background-color: #8ce73b !important;
-  border-color: #8ce73b !important;
-  color: black !important;
+  background-color: var(--main-green) !important;
+  border-color: var(--main-green) !important;
 }
 
 .add-button-big {
@@ -437,6 +422,7 @@
 .close-button {
   background-color: var(--main-gray) !important;
   border-color: var(--main-green) !important;
+  /* color: var(--main-green) !important; */
 }
 
 .dashboard-view-buttons-all {
@@ -477,9 +463,18 @@
   max-width: 1025px;
   margin: auto;
   margin-top: 46px;
-  /* margin-bottom: 63.78px; */
   min-height: 94vh;
 
   display: flex;
   flex-direction: column;
+}
+
+.support-container {
+  min-height: 91vh;
+  margin: auto;
+  margin-top: 100px;
+  max-width: 1025px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
 }

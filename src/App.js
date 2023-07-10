@@ -18,6 +18,7 @@ import currencies from "./Components/Currencies";
 import ResetPassword from "./Pages/ResetPassword";
 import Category from "./Pages/Category";
 import { BeatLoader } from "react-spinners";
+import Support from "./Pages/Support";
 
 const DB_USER_FOLDER_NAME = "user";
 const DB_EXPENSES_FOLDER_NAME = "expenses";
@@ -325,6 +326,7 @@ export default function App() {
 
   return (
     <>
+
       <Navbar fixed="top" className="navbar-container">
         <Container
           style={{
@@ -396,6 +398,7 @@ export default function App() {
                     <NavDropdown.Item href="/category">
                       My Categories
                     </NavDropdown.Item>
+                    <NavDropdown.Item href="/support">Support</NavDropdown.Item>
                     <NavDropdown.Item
                       onClick={() => {
                         signOut(auth)
@@ -419,16 +422,36 @@ export default function App() {
                       Sign In
                     </NavDropdown.Item>
                     <NavDropdown.Item href="/signup">Sign Up</NavDropdown.Item>
+                    <NavDropdown.Item href="/support">Support</NavDropdown.Item>
                   </>
                 )}
               </NavDropdown>
             </Nav>
           </Container>
         </Container>
+
       </Navbar>
 
       <Routes>
-        <Route path="/" element={<Welcome isLoggedIn={isLoggedIn} />} />
+        <Route
+          path="/"
+          element={
+            <MapExpenses
+              isLoggedIn={isLoggedIn}
+              uid={uid}
+              userData={userData}
+              expensesCategory={expensesCategory}
+              currenciesList={currenciesList}
+              categoriesData={categoriesData}
+              isLoadingExpenses={isLoadingExpenses}
+              groupedExpenses={groupedExpenses}
+              displayCurrency={displayCurrency}
+              setDisplayCurrency={setDisplayCurrency}
+              exchangeRates={exchangeRates}
+              noExpenses={noExpenses}
+            />
+          }
+        />
         <Route
           path="/mapexpenses"
           element={
@@ -512,6 +535,8 @@ export default function App() {
           path="/authform"
           element={<AuthForm isLoggedIn={isLoggedIn} />}
         />
+
+        <Route path="/support" element={<Support />} />
 
         <Route
           path="/resetpassword"

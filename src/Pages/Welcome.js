@@ -4,9 +4,6 @@ import { AlignCenter, Justify } from "react-bootstrap-icons";
 
 export default function Welcome({ isLoggedIn }) {
   const navigate = useNavigate();
-  const mainColor = getComputedStyle(document.documentElement)
-    .getPropertyValue("--main-green")
-    .trim();
 
   return (
     <div className="welcome-container">
@@ -42,10 +39,12 @@ export default function Welcome({ isLoggedIn }) {
               <em>"Where'd my money go?!"</em>
             </b>
           </p>{" "}
+
           <Link
             to="/authform"
             // style={{ color: mainColor }}
           >
+
             Sign Up / Log In here
           </Link>
         </div>

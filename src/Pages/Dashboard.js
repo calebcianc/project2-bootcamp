@@ -8,9 +8,10 @@ import {
   Bar,
   Cell,
 } from "recharts";
-import { Button, Tab, Tabs } from "react-bootstrap";
+import { Button, Tab, Tabs, Modal } from "react-bootstrap";
 import ExpPieChart from "../Components/ExpPieChart";
 import ExpensesByCategory from "../Components/ExpensesByCategory";
+import { ReactComponent as InfoCircle } from "../Icons/info-circle.svg";
 
 export default function Dashboard({ expensesCategory, categoriesData }) {
   const [selectedPeriod, setSelectedPeriod] = useState("");
@@ -19,9 +20,12 @@ export default function Dashboard({ expensesCategory, categoriesData }) {
   const [activeKey, setActiveKey] = useState("bargraph");
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const mainColor = getComputedStyle(document.documentElement)
-    .getPropertyValue("--main-green")
-    .trim();
+  const [showModal, setShowModal] = useState(false);
+
+  const handleClose = () => setShowModal(false);
+  const handleShow = () => setShowModal(true);
+
+  const [filteredExpenses, setFilteredExpenses] = useState([]);
 
   // Function to find the minimum, maximum date in expensesList
   const calculateStartAndEndDates = (expensesCategory, view) => {
@@ -51,16 +55,6 @@ export default function Dashboard({ expensesCategory, categoriesData }) {
     }
     return { startDate, endDate };
   };
-
-  // Update the startDate and endDate using useState and the calculateStartAndEndDates function
-  useEffect(() => {
-    const { startDate, endDate } = calculateStartAndEndDates(
-      expensesCategory,
-      view
-    );
-    setStartDate(startDate);
-    setEndDate(endDate);
-  }, [expensesCategory, view]);
 
   // Function to generate a list of all possible period between start and end date
   const generateDatesInRange = (startDate, endDate, view) => {
@@ -166,49 +160,85 @@ export default function Dashboard({ expensesCategory, categoriesData }) {
     </Button>
   ));
 
+  // Update the startDate and endDate using useState and the calculateStartAndEndDates function
+  useEffect(() => {
+    const { startDate, endDate } = calculateStartAndEndDates(
+      expensesCategory,
+      view
+    );
+    setStartDate(startDate);
+    setEndDate(endDate);
+  }, [expensesCategory, view]);
+
+  // Reset selectedPeriod whenever the view changes
+  useEffect(() => {
+    setSelectedPeriod("");
+    setFocusBar(null); // Reset the focused bar as well
+  }, [view]);
+
   /* Filter expenses based on the selected date. If selectedDate is not null, filter expensesList such that expense.date is equiv to selectedDate, else show all according to the view. Used for pie chart and list expenses*/
-  const filteredExpenses = selectedPeriod
-    ? expensesCategory.filter((expense) => {
-        if (view === "daily") {
-          // Compare the full date (YYYY-MM-DD)
-          return expense.date.slice(0, 10) === selectedPeriod;
-        } else if (view === "monthly") {
-          // Compare the year and month (YYYY-MM)
-          return expense.date.slice(0, 7) === selectedPeriod;
-        } else if (view === "yearly") {
-          // Compare the year (YYYY)
-          return expense.date.slice(0, 4) === selectedPeriod;
-        } else {
-          return false;
-        }
-      })
-    : expensesCategory.filter((expense) => {
-        if (view === "daily") {
-          return (
-            expense.date >= startDate.toISOString().slice(0, 10) &&
-            expense.date <= endDate.toISOString().slice(0, 10)
-          );
-        } else if (view === "monthly") {
-          return (
-            expense.date.slice(0, 7) >= startDate.toISOString().slice(0, 7) &&
-            expense.date.slice(0, 7) <= endDate.toISOString().slice(0, 7)
-          );
-        } else if (view === "yearly") {
-          return (
-            expense.date.slice(0, 4) >= startDate.toISOString().slice(0, 4) &&
-            expense.date.slice(0, 4) <= endDate.toISOString().slice(0, 4)
-          );
-        } else {
-          return false;
-        }
-      });
+  useEffect(() => {
+    const filterExpenses = () => {
+      if (selectedPeriod) {
+        const filtered = expensesCategory.filter((expense) => {
+          if (view === "daily") {
+            return expense.date.slice(0, 10) === selectedPeriod;
+          } else if (view === "monthly") {
+            return expense.date.slice(0, 7) === selectedPeriod;
+          } else if (view === "yearly") {
+            return expense.date.slice(0, 4) === selectedPeriod;
+          } else {
+            return false;
+          }
+        });
+        setFilteredExpenses(filtered);
+      } else {
+        const filtered = expensesCategory.filter((expense) => {
+          if (view === "daily") {
+            return (
+              expense.date >= startDate.toISOString().slice(0, 10) &&
+              expense.date <= endDate.toISOString().slice(0, 10)
+            );
+          } else if (view === "monthly") {
+            return (
+              expense.date.slice(0, 7) >= startDate.toISOString().slice(0, 7) &&
+              expense.date.slice(0, 7) <= endDate.toISOString().slice(0, 7)
+            );
+          } else if (view === "yearly") {
+            return (
+              expense.date.slice(0, 4) >= startDate.toISOString().slice(0, 4) &&
+              expense.date.slice(0, 4) <= endDate.toISOString().slice(0, 4)
+            );
+          } else {
+            return false;
+          }
+        });
+        setFilteredExpenses(filtered);
+      }
+    };
+
+    filterExpenses();
+  }, [view, expensesCategory, selectedPeriod, startDate, endDate]);
 
   return (
     <div className="dashboard-container">
+
       <div className="dashboard-header">
-        <h1>Total spending </h1>
+      <h1>
+          Total spending
+          <sup>
+            <Button variant="link" onClick={handleShow}>
+              <InfoCircle
+                width="20px"
+                height="20px"
+                color="var(--main-green)"
+              />
+            </Button>
+          </sup>
+        </h1>
       </div>
       <div className="dashboard-main">
+
         <div className="dashboard-view-buttons-all ">{viewButtons}</div>
         <Tabs
           activeKey={activeKey}
@@ -272,7 +302,7 @@ export default function Dashboard({ expensesCategory, categoriesData }) {
                         key={index}
                         fill={
                           focusBar === index || focusBar === null
-                            ? mainColor
+                            ? "var(--main-green)"
                             : "#cac8c8"
                         }
                       />
@@ -315,6 +345,31 @@ export default function Dashboard({ expensesCategory, categoriesData }) {
       <div className="dashboard-expenses">
         <ExpensesByCategory filteredExpenses={filteredExpenses} />
       </div>
+
+      <Modal show={showModal} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Information</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+            <strong>Daily:</strong> Shows the expenses on a daily basis for last
+            month.
+          </p>
+          <p>
+            <strong>Monthly:</strong> Shows the total expenses for each month
+            for the past 12 months.
+          </p>
+          <p>
+            <strong>Yearly:</strong> Shows the total expenses for each year for
+            the last 3 years.
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button className="close-button" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }
