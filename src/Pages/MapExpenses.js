@@ -73,6 +73,7 @@ export default function MapExpenses({
   // Format numbers to the decimal format i.e., add a comma for every thousand and decimal places if applicable
   const formatter = new Intl.NumberFormat("en-US", {
     style: "decimal",
+    minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
 

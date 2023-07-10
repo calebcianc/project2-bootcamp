@@ -17,6 +17,13 @@ export default function ExpensesByCategory({ filteredExpenses }) {
     return acc;
   }, {});
 
+  // Format numbers to the decimal format i.e., add a comma for every thousand and decimal places if applicable
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "decimal",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
   return (
     /*This component maps through each category of expenses and creates a Card for each category. The Card will show the total amount of expenses for that category and will expand to show each individual expense when clicked. */
     <div className="container" style={{ padding: "0", width: "500px" }}>
@@ -52,7 +59,7 @@ export default function ExpensesByCategory({ filteredExpenses }) {
                 </div>
               </div>
               <div style={{ marginLeft: "auto" }}>
-                {expenses[0].displayCurrency} {total}
+                {expenses[0].displayCurrency} {formatter.format(total)}
               </div>
             </Card.Header>
 
@@ -83,13 +90,17 @@ export default function ExpensesByCategory({ filteredExpenses }) {
                           <b>{expense.date}</b>
                         </Card.Title>
                         <Card.Text>
-                          {`${expense.description} (${expense.currency} ${expense.amount})`}
+                          {`${expense.description} (${
+                            expense.currency
+                          } ${formatter.format(expense.amount)})`}
                         </Card.Text>
                       </div>
                       <div style={{ marginLeft: "auto" }}>
-                        <Card.Text>{`${expense.displayCurrency} ${parseFloat(
+                        <Card.Text>{`${
+                          expense.displayCurrency
+                        } ${formatter.format(
                           expense.displayAmount
-                        ).toFixed(2)}`}</Card.Text>
+                        )}`}</Card.Text>
                       </div>
                     </Card.Body>
                   </Card>

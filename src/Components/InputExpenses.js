@@ -136,17 +136,17 @@ export default function InputExpenses({
         onClick={handleShow}
         title="Click to add new expenses"
       >
-        <b>+ Add Expense</b>
+        + Add Expense
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} style={{ maxHeight: "95svh" }}>
         <Modal.Header closeButton>
           <Modal.Title>Input Expenses</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group
-              className="mb-3"
+              className="mb-2"
               controlId="exampleForm.ControlTextarea1"
             >
               <Form.Label>Date</Form.Label>
@@ -158,6 +158,7 @@ export default function InputExpenses({
             </Form.Group>
 
             <Form.Select
+              className="mb-2"
               aria-label="Default select example"
               onChange={(e) => {
                 const selectedCategory = categoriesData.find(
@@ -181,9 +182,8 @@ export default function InputExpenses({
                 </option>
               ))}
             </Form.Select>
-            <br />
 
-            <InputGroup className="mb-3">
+            <InputGroup className="mb-2">
               <Typeahead
                 id="currency-typeahead"
                 labelKey="currency"
@@ -262,13 +262,13 @@ export default function InputExpenses({
             </Form.Group>
 
             <Form.Group
-              className="mb-3"
+              className="mb-2"
               controlId="exampleForm.ControlTextarea1"
             >
               <Form.Label>Description of item</Form.Label>
               <Form.Control
                 as="textarea"
-                rows={2}
+                rows={1}
                 type="text"
                 placeholder="Description"
                 value={description}
@@ -276,7 +276,7 @@ export default function InputExpenses({
               />
             </Form.Group>
 
-            <Form.Group controlId="formFile" className="mb-3">
+            <Form.Group controlId="formFile" className="mb-2">
               <Form.Label>Upload receipt</Form.Label>
               <Form.Control
                 type="file"

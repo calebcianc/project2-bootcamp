@@ -140,7 +140,7 @@ export default function EditExpenses({
         <Modal.Body>
           <Form>
             <Form.Group
-              className="mb-3"
+              className="mb-2"
               controlId="exampleForm.ControlTextarea1"
             >
               <Form.Label>Date</Form.Label>
@@ -151,6 +151,7 @@ export default function EditExpenses({
               />
             </Form.Group>
             <Form.Select
+              className="mb-2"
               aria-label="Default select example"
               value={categoryDisplay}
               onChange={(e) => {
@@ -176,8 +177,8 @@ export default function EditExpenses({
                 </option>
               ))}
             </Form.Select>
-            <br />
-            <InputGroup className="mb-3">
+
+            <InputGroup className="mb-2">
               <Typeahead
                 id="currency-typeahead"
                 labelKey="currency"
@@ -258,20 +259,20 @@ export default function EditExpenses({
               </div>
             </Form.Group>
             <Form.Group
-              className="mb-3"
+              className="mb-2"
               controlId="exampleForm.ControlTextarea1"
             >
               <Form.Label>Description</Form.Label>
               <Form.Control
                 as="textarea"
-                rows={2}
+                rows={1}
                 type="text"
                 placeholder={description}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
             </Form.Group>
-            <Form.Group controlId="formFile" className="mb-3">
+            <Form.Group controlId="formFile" className="mb-2">
               <Form.Label>Upload receipt</Form.Label>
               <Form.Control
                 type="file"

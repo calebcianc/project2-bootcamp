@@ -156,7 +156,7 @@ export default function Dashboard({ expensesCategory, categoriesData }) {
           : "dashboard-view-button-default"
       }
     >
-      {viewName.charAt(0).toUpperCase() + viewName.slice(1)}
+      <b>{viewName.charAt(0).toUpperCase() + viewName.slice(1)}</b>
     </Button>
   ));
 
@@ -254,16 +254,20 @@ export default function Dashboard({ expensesCategory, categoriesData }) {
                     : "inactive-dashboard-tab"
                 }
               >
-                Bar Graph
+                <b>Bar Graph</b>
               </span>
             }
           >
-            {selectedPeriod
-              ? `Expenses for ${selectedPeriod}`
-              : `Expenses from ${startDate
-                  .toISOString()
-                  .slice(0, 10)} to ${endDate.toISOString().slice(0, 10)}`}
-
+            <div style={{ margin: "10px 0 20px 0" }}>
+              <b>
+                {" "}
+                {selectedPeriod
+                  ? `Expenses for ${selectedPeriod}`
+                  : `Expenses from ${startDate
+                      .toISOString()
+                      .slice(0, 10)} to ${endDate.toISOString().slice(0, 10)}`}
+              </b>
+            </div>
             <div className="chart-container">
               <div className="chart-wrapper">
                 <BarChart
@@ -320,16 +324,21 @@ export default function Dashboard({ expensesCategory, categoriesData }) {
                     : "inactive-dashboard-tab"
                 }
               >
-                Pie Chart
+                <b>Pie Chart</b>
               </span>
             }
           >
-            {selectedPeriod
-              ? `Expenses for ${selectedPeriod}`
-              : `Expenses from ${startDate
-                  .toISOString()
-                  .slice(0, 10)} to ${endDate.toISOString().slice(0, 10)}`}
-            <div className="chart-container">
+            <div style={{ margin: "10px 0 20px 0" }}>
+              <b>
+                {" "}
+                {selectedPeriod
+                  ? `Expenses for ${selectedPeriod}`
+                  : `Expenses from ${startDate
+                      .toISOString()
+                      .slice(0, 10)} to ${endDate.toISOString().slice(0, 10)}`}
+              </b>
+            </div>
+            <div className="piechart-container">
               <div className="chart-wrapper">
                 <ExpPieChart
                   filteredExpenses={filteredExpenses}
@@ -340,10 +349,7 @@ export default function Dashboard({ expensesCategory, categoriesData }) {
           </Tab>
         </Tabs>
       </div>
-      <div
-        className="dashboard-expenses"
-        style={{ marginTop: "0", paddingTop: "0" }}
-      >
+      <div className="dashboard-expenses">
         <ExpensesByCategory filteredExpenses={filteredExpenses} />
       </div>
 
