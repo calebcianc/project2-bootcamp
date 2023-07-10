@@ -31,6 +31,13 @@ export default function MapExpenses({
   const [lng, setLng] = useState(0);
   const [showToast, setShowToast] = useState(false);
   const [expenseCounter, setExpenseCounter] = useState(0);
+  const [filters, setFilters] = useState({
+    category: null,
+    startDate: null,
+    endDate: null,
+    upperLimit: null,
+    lowerLimit: null,
+  });
 
   // not used in current component
   const [mapRef, setMapRef] = useState();
@@ -104,7 +111,9 @@ export default function MapExpenses({
     }
   };
 
-  useEffect(() => {}, [isLoggedIn]);
+  // useEffect(() => {
+  //   console.log(JSON.stringify(filteredExpenses));
+  // }, [filteredExpenses]);
 
   return (
     <div>
@@ -136,6 +145,7 @@ export default function MapExpenses({
             isHighlighted={isHighlighted}
             setIsHighlighted={setIsHighlighted}
             displayCurrency={displayCurrency}
+            filters={filters}
           />
           <ListExpenses
             uid={uid}
@@ -160,6 +170,8 @@ export default function MapExpenses({
             setExpenseCounter={setExpenseCounter}
             exchangeRates={exchangeRates}
             noExpenses={noExpenses}
+            filters={filters}
+            setFilters={setFilters}
           />
         </div>
       ) : (

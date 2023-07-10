@@ -30,16 +30,11 @@ export default function ListExpenses({
   isLoadingExpenses,
   exchangeRates,
   noExpenses,
+  filters,
+  setFilters,
 }) {
   const [showModal, setShowModal] = useState(false);
   const [selectedExpense, setSelectedExpense] = useState(null);
-  const [filters, setFilters] = useState({
-    category: null,
-    startDate: null,
-    endDate: null,
-    upperLimit: null,
-    lowerLimit: null,
-  });
   const [showCheckboxes, setShowCheckboxes] = useState(false);
   const [selectedExpenses, setSelectedExpenses] = useState([]);
   const [selectedExpensesData, setSelectedExpensesData] = useState([]);

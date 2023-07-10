@@ -136,7 +136,7 @@ export default function InputExpenses({
         onClick={handleShow}
         title="Click to add new expenses"
       >
-        + Add Expense
+        <b>+ Add Expense</b>
       </Button>
 
       <Modal show={show} onHide={handleClose} style={{ maxHeight: "95svh" }}>

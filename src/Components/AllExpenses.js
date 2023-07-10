@@ -60,9 +60,9 @@ export default function AllExpenses({
     });
   };
 
-  useEffect(() => {
-    console.log(JSON.stringify(groupedExpenses));
-  }, [isLoadingExpenses]);
+  // useEffect(() => {
+  //   console.log(JSON.stringify(groupedExpenses));
+  // }, [isLoadingExpenses]);
 
   return (
     <div className="allExp-container">
@@ -93,6 +93,7 @@ export default function AllExpenses({
                 return false;
               return true;
             });
+
             if (filteredExpenses.length === 0) return null;
             return (
               <div key={date}>

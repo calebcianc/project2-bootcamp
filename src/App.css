@@ -4,7 +4,7 @@
 
 /* Custom properties/variables  */
 :root {
-  background-color: whitesmoke;
+  background-color: white;
   --main-white: #000000; /* font color */
   --main-gray: rgb(202, 200, 200); /* font color */
   --main-green: #8ce83c;
@@ -111,7 +111,7 @@
 }
 
 .allExp-container {
-  max-height: 34vh;
+  max-height: 33.5svh;
   overflow-y: auto;
   cursor: pointer;
 }
@@ -157,7 +157,7 @@
 
 .temporary-box {
   margin: auto;
-  margin-top: 63.78px;
+  margin-top: 46px;
   margin-bottom: 63.78px;
   min-height: 91svh;
   max-width: 1025px;
@@ -213,10 +213,12 @@
 
 .profile-container {
   margin: auto;
-  margin-top: 100px;
+  padding-top: 100px;
   max-width: 1025px;
   display: flex;
   justify-content: center;
+  background-color: whitesmoke;
+  height: 95svh;
 }
 
 .profile-picture {
@@ -232,12 +234,14 @@
 
 .dashboard-container {
   margin: auto;
-  max-height: 90vh;
+  height: 94svh;
   max-width: 1025px;
 
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
+
+  background-color: whitesmoke;
 }
 
 .dashboard-header {
@@ -285,8 +289,8 @@
 
 .reset-container {
   margin: auto;
-  margin-top: 63.78px;
-  max-height: 45.5svh;
+  margin-top: 46px;
+  height: 94svh;
   max-width: 1025px;
   font-size: 1rem;
 
@@ -314,11 +318,11 @@
   }
 
   .dashboard-container {
-    margin-top: 100px;
+    padding-top: 100px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 10svh 50svh;
-    height: 88svh;
+    grid-template-rows: 10svh 78svh;
+    height: 100svh;
   }
 
   .dashboard-header {
@@ -367,15 +371,16 @@
   }
   .reset-container {
     height: 100%;
-    min-height: 91vh;
+    height: 94svh;
   }
   .profile-container {
     height: 100%;
-    min-height: 91vh;
+    height: 100svh;
   }
   .category-container {
     height: 100%;
-    min-height: 91vh;
+    min-height: 88svh;
+    background-color: whitesmoke;
   }
   .dashboard-container {
     height: 100%;
@@ -385,8 +390,9 @@
 
 .category-container {
   margin: auto;
-  margin-top: 100px;
+  padding-top: 100px;
   max-width: 1025px;
+  height: 100svh;
 
   display: flex;
   flex-direction: column;
@@ -405,14 +411,16 @@
 
 @media (max-width: 600px) {
   .category-container {
-    margin: auto;
-    margin-top: 100px;
+    /* margin: auto; */
+    padding-top: 0;
     max-width: 600px;
-    height: 90svh;
+    height: 95svh;
+    background-color: whitesmoke;
   }
 
   .category-list {
     grid-template-columns: 1fr;
+    height: 90svh;
   }
 
   .category-card {
@@ -482,23 +490,32 @@
   border-color: var(--main-green) !important;
 }
 
+.signup-parent {
+  max-width: 1025px;
+  margin: auto;
+  height: 100svh;
+  background-color: whitesmoke;
+}
+
 .signup-container {
   max-width: 500px;
   margin: auto;
-  margin-top: 100px;
+  padding-top: 100px;
   margin-bottom: 0;
   height: 80vh;
+  background-color: whitesmoke;
 
   display: flex;
   flex-direction: column;
 }
 
 .support-container {
-  min-height: 91vh;
+  height: 100svh;
   margin: auto;
-  margin-top: 100px;
+  padding-top: 100px;
   max-width: 1025px;
   display: flex;
   flex-direction: column;
+  background-color: whitesmoke;
   /* justify-content: space-around; */
 }

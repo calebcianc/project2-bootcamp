@@ -325,7 +325,7 @@ export default function App() {
   }, [displayCurrency]);
 
   return (
-    <div style={{ backgroundColor: "whitesmoke" }}>
+    <div style={{ backgroundColor: "white" }}>
       <Navbar fixed="top" className="navbar-container" style={{ padding: "0" }}>
         <Container
           style={{

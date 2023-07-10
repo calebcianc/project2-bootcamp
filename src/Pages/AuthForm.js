@@ -30,7 +30,7 @@ export default function AuthForm({ isLoggedIn, username }) {
   };
 
   return (
-    <>
+    <div className="signup-parent">
       <Container
         className="d-flex flex-column align-items-center justify-content-center "
         style={{ height: "100vh" }}
@@ -102,6 +102,6 @@ export default function AuthForm({ isLoggedIn, username }) {
           </div>
         )}
       </Container>
-    </>
+    </div>
   );
 }
