@@ -325,8 +325,7 @@ export default function App() {
   }, [displayCurrency]);
 
   return (
-    <>
-
+    <div style={{ backgroundColor: "whitesmoke" }}>
       <Navbar fixed="top" className="navbar-container">
         <Container
           style={{
@@ -367,6 +366,7 @@ export default function App() {
           <Container className="navbar-profile">
             <Nav>
               <NavDropdown
+                className="custom-nav-dropdown"
                 title={
                   profilePhotoURL ? (
                     <>
@@ -429,7 +429,6 @@ export default function App() {
             </Nav>
           </Container>
         </Container>
-
       </Navbar>
 
       <Routes>
@@ -545,6 +544,6 @@ export default function App() {
 
         <Route path="*" element={<Error />} />
       </Routes>
-    </>
+    </div>
   );
 }

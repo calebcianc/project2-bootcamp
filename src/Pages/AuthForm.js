@@ -85,20 +85,13 @@ export default function AuthForm({ isLoggedIn, username }) {
                   <GoogleButton />
 
                   <div className="text-left" style={{ marginTop: "5px" }}>
-
-                    <Link
-                      to="/signUp"
-                      // style={{ color: mainColor }}
-                    >
-
+                    <Link to="/signUp" style={{ color: "var(--main-color)" }}>
                       Don't have an account? Create one here!
                     </Link>
                     <br />
                     <Link
                       to="/resetpassword"
-
-                      // style={{ color: mainColor }}
-
+                      style={{ color: "var(--main-color)" }}
                     >
                       Forgot your password?{" "}
                     </Link>

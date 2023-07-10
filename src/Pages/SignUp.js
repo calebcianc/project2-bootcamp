@@ -118,7 +118,7 @@ export default function SignUp({
   };
 
   return (
-    <Container className="signup-container">
+    <Container className="signup-container" style={{ maxWidth: "1025px" }}>
       {" "}
       <h1>Create Account</h1>
       {isLoggedIn ? (
@@ -224,18 +224,17 @@ export default function SignUp({
                 onClick={signUp}
                 style={{ width: "40%" }}
                 className="add-button"
+                disabled={
+                  firstName === "" || lastName === "" || displayName === ""
+                }
               >
                 Sign Up
               </Button>
 
               <GoogleButton />
 
-
               <div className="text-left" style={{ marginTop: "5px" }}>
-                <Link
-                  to="/authform"
-                  // style={{ color: mainColor }}
-                >
+                <Link to="/authform" style={{ color: "var(--main-color)" }}>
                   Already have an account? Sign In here!
                 </Link>
               </div>
@@ -244,6 +243,5 @@ export default function SignUp({
         </Row>
       )}
     </Container>
-
   );
 }

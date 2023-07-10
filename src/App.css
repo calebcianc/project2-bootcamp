@@ -4,10 +4,12 @@
 
 /* Custom properties/variables  */
 :root {
+  background-color: whitesmoke;
   --main-white: #000000; /* font color */
   --main-gray: rgb(202, 200, 200); /* font color */
-  --main-green: white;
-  --main-dark-gray: whitesmoke;
+  --main-green: #8ce83c;
+  --main-dark-gray: gray;
+  --main-color: #0bc06d;
 }
 
 .navbar-container {
@@ -19,6 +21,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 1025px;
+  margin: auto;
 }
 
 .navbar-brand {
@@ -29,10 +33,10 @@
   width: 100%;
   display: flex;
   justify-content: space-evenly;
-  font-size: 1rem;
+  font-size: 1.2rem;
   padding: 0;
   flex-grow: 0;
-  }
+}
 
 .nav-link {
   color: var(--main-white) !important;
@@ -114,7 +118,7 @@
 }
 
 .expense-date-title {
-  background-color: var(--main-dark-gray);
+  background-color: whitesmoke;
   padding: 5px 0px 5px 20px;
   color: var(--main-white);
   font-weight: bold;
@@ -140,7 +144,7 @@
   height: 47svh;
   max-height: 45.5svh;
   max-width: 1025px;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   padding: 10px;
 
   color: black;
@@ -158,7 +162,7 @@
   margin-bottom: 63.78px;
   min-height: 91svh;
   max-width: 1025px;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
 
   color: black;
   background-color: white;
@@ -299,6 +303,7 @@
   }
 
   .dashboard-container {
+    margin-top: 100px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
   }
@@ -322,8 +327,8 @@
 
   .dashboard-expenses {
     grid-column: 2;
-    margin-top: 11svh;
-    height: 77svh;
+    /* margin-top: 11svh; */
+    height: 88svh;
   }
 
   .App {
@@ -412,6 +417,7 @@
 .add-button-big {
   background-color: var(--main-green) !important;
   border-color: var(--main-green) !important;
+  color: black !important;
 }
 
 .add-button-big {
@@ -422,6 +428,7 @@
 .close-button {
   background-color: var(--main-gray) !important;
   border-color: var(--main-green) !important;
+  color: black !important;
   /* color: var(--main-green) !important; */
 }
 

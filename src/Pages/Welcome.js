@@ -39,14 +39,11 @@ export default function Welcome({ isLoggedIn }) {
               <em>"Where'd my money go?!"</em>
             </b>
           </p>{" "}
-
-          <Link
-            to="/authform"
-            // style={{ color: mainColor }}
-          >
-
-            Sign Up / Log In here
-          </Link>
+          <p>
+            <Link to="/authform" style={{ color: "var(--main-color)" }}>
+              Sign Up / Log In here
+            </Link>
+          </p>
         </div>
       )}
     </div>

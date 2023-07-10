@@ -57,13 +57,6 @@ export default function MapExpenses({
     }
   }, [expenseCounter]);
 
-  // Fetches displayCurrency from the database and update the client-side state i.e. Database > Client
-  useEffect(() => {
-    if (userData && userData.displayCurrency) {
-      setDisplayCurrency(userData.displayCurrency);
-    }
-  }, [userData]);
-
   // Update the displayCurrency in the database whenever there is a change in client-side state i.e., Client > Database
   useEffect(() => {
     if (displayCurrency !== null) {

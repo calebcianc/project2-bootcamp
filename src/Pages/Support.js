@@ -15,10 +15,10 @@ export default function Support() {
         "https://i.imgur.com/6nLIyt6.png",
       ],
       info: [
-        "This represent...",
-        "This represent...",
-        "This represent...",
-        "This represent...",
+        "This represent expenses below 10",
+        "This represent expenses below 100",
+        "This represent expenses below 1000",
+        "This represent expenses above 1000",
       ],
     },
     {

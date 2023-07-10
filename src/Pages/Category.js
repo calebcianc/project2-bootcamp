@@ -227,7 +227,7 @@ export default function Category({ uid, isLoggedIn, categoriesData }) {
                 />
                 {/* ternary operator to display color picker */}
                 {displayColorPicker ? (
-                  <div style={{ position: "absolute", zIndex: "2" }}>
+                  <div style={{ zIndex: "2" }}>
                     <div
                       style={{
                         position: "fixed",
