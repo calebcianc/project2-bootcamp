@@ -116,7 +116,7 @@ export default function AllExpenses({
                         }
                       >
                         <Card onClick={() => handleOnSelect(expense)}>
-                          <Card.Body>
+                          <Card.Body style={{ padding: "10px 15px" }}>
                             <div className="card-content">
                               {/* Additional div wrapper needed to keep the category icon circle round */}
                               <div
@@ -187,11 +187,10 @@ export default function AllExpenses({
                                       </>
                                     ) : null}
                                     {/* Display displayCurrency+Amount, otherwise show input currency+amount */}
-                                    {expense.displayCurrency ||
-                                      expense.currency}
-                                    {formatter.format(
-                                      expense.displayAmount || expense.amount
-                                    )}
+                                    {`${expense.displayCurrency}
+                                     ${formatter.format(
+                                       expense.displayAmount
+                                     )}`}
                                     {/* If the displayCurrency is different from the input currency, show the input currency and amount */}
                                     {expense.displayCurrency !==
                                     expense.currency
