@@ -118,7 +118,7 @@
 
 .expense-date-title {
   background-color: whitesmoke;
-  padding: 5px 0px 5px 20px;
+  padding: 0px 0px 0px 15px;
   color: var(--main-white);
   font-weight: bold;
   font-size: 1.2rem;
@@ -177,8 +177,8 @@
 
 .mini-navbar {
   width: 100%;
-  margin: 0 0 5px 0;
-  padding: 0 10px;
+  margin: 0;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -274,7 +274,7 @@
   font-size: 1rem;
 
   color: black;
-  background-color: #ffffff;
+  background-color: whitesmoke;
 
   border-width: 1rem;
   border-color: red;
@@ -461,7 +461,7 @@
 }
 
 .reset-pw-button {
-  /* background-color: var(--main-green) !important; */
+  background-color: var(--main-green) !important;
   border-color: var(--main-green) !important;
 }
 
