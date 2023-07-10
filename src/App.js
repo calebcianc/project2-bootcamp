@@ -46,48 +46,6 @@ export default function App() {
   // Fetch the day's exchange rates
   const exchangeRatesApiKey = process.env.REACT_APP_EXCHANGE_API_KEY;
   useEffect(() => {
-    async function fetchRatesAndUpdateDB() {
-      try {
-        const response = await fetch(
-          `https://v6.exchangerate-api.com/v6/${exchangeRatesApiKey}/latest/USD`
-        );
-        // Check if response status is ok
-        if (!response.ok) {
-          console.error(
-            "Error fetching exchange rates, status:",
-            response.status
-          );
-          return;
-        }
-
-        const data = await response.json();
-        // Ensure that data.conversion_rates is an object
-        if (
-          !data.conversion_rates ||
-          typeof data.conversion_rates !== "object"
-        ) {
-          console.error("conversion_rates is not an object or is undefined.");
-          return;
-        }
-
-        const dateRef = ref(
-          realTimeDatabase,
-          `${DB_EXCHANGERATES_FOLDER_NAME}/date`
-        );
-        const ratesRef = ref(
-          realTimeDatabase,
-          `${DB_EXCHANGERATES_FOLDER_NAME}/data`
-        );
-
-        await update(ratesRef, data.conversion_rates);
-        await set(dateRef, today);
-
-        setExchangeRates(data.conversion_rates);
-      } catch (error) {
-        console.error("Error fetching exchange rates:", error);
-      }
-    }
-
     // Check date in DB - if date is today, fetch the rates from DB. If date is not today, fetch rates via API and update DB
     const dateRef = ref(realTimeDatabase, `${DB_CATEGORY_FOLDER_NAME}/date`);
     get(dateRef)
@@ -108,7 +66,49 @@ export default function App() {
               );
             });
         } else {
-          fetchRatesAndUpdateDB();
+          async function fetchRatesAndUpdateDB() {
+            try {
+              const response = await fetch(
+                `https://v6.exchangerate-api.com/v6/${exchangeRatesApiKey}/latest/USD`
+              );
+              // Check if response status is ok
+              if (!response.ok) {
+                console.error(
+                  "Error fetching exchange rates, status:",
+                  response.status
+                );
+                return;
+              }
+
+              const data = await response.json();
+              // Ensure that data.conversion_rates is an object
+              if (
+                !data.conversion_rates ||
+                typeof data.conversion_rates !== "object"
+              ) {
+                console.error(
+                  "conversion_rates is not an object or is undefined."
+                );
+                return;
+              }
+
+              const dateRef = ref(
+                realTimeDatabase,
+                `${DB_EXCHANGERATES_FOLDER_NAME}/date`
+              );
+              const ratesRef = ref(
+                realTimeDatabase,
+                `${DB_EXCHANGERATES_FOLDER_NAME}/data`
+              );
+
+              await update(ratesRef, data.conversion_rates);
+              await set(dateRef, today);
+
+              setExchangeRates(data.conversion_rates);
+            } catch (error) {
+              console.error("Error fetching exchange rates:", error);
+            }
+          }
         }
       })
       .catch((error) => {
