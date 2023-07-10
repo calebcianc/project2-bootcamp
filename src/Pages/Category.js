@@ -102,16 +102,17 @@ export default function Category({ uid, isLoggedIn, categoriesData }) {
 
   return (
     <div className="category-container">
-      <h1>My Categories</h1>
-      <div>
-        <h6>✏️ Click on the categories to edit</h6>
-      </div>
+      <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>
+        My Categories
+      </h1>
+      {/* <h6>✏️ Click on the categories to edit</h6> */}
       <Button
         className="add-button-big "
         onClick={() => handleShowCatModal()}
         title="Click to add new category"
+        style={{ marginBottom: "1rem" }}
       >
-        + Add Category
+        <b>+ Add Category</b>
       </Button>
       {/* loop through and show each category as a card */}
       <div className="category-list">

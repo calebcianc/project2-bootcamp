@@ -19,7 +19,7 @@ export default function ExpensesByCategory({ filteredExpenses }) {
 
   return (
     /*This component maps through each category of expenses and creates a Card for each category. The Card will show the total amount of expenses for that category and will expand to show each individual expense when clicked. */
-    <div className="container mt-4" style={{ width: "500px" }}>
+    <div className="container" style={{ padding: "0", width: "500px" }}>
       {Object.entries(expensesByCategory).map(([category, expenses], index) => {
         const total = expenses
           .reduce((sum, expense) => sum + parseFloat(expense.displayAmount), 0)
@@ -39,7 +39,7 @@ export default function ExpensesByCategory({ filteredExpenses }) {
                   borderRadius: "50%",
                   width: "3rem",
                   height: "3rem",
-                  fontSize: "2rem",
+                  fontSize: "1.2rem",
                   backgroundColor: expenses[0].color,
                 }}
               >
@@ -62,24 +62,35 @@ export default function ExpensesByCategory({ filteredExpenses }) {
                   <Card
                     key={expense.id}
                     className="my-card-body"
-                    style={{ margin: "10px", border: "1px solid black" }}
+                    // style={{ margin: "10px" }}
                   >
                     <Card.Body
                       key={expense.id}
-                      style={{ backgroundColor: "white", textAlign: "left" }}
+                      style={{
+                        padding: "5px 15px",
+                        marginLeft: "57px",
+                        backgroundColor: "white",
+                        textAlign: "left",
+                        fontSize: "0.9rem",
+                        display: "flex",
+                      }}
                     >
                       {/* Display the individual expense */}
-                      <Card.Title>
-                        <strong>{expense.date}</strong>
-                      </Card.Title>
-                      <Card.Text>
-                        {expense.displayCurrency}{" "}
-                        {parseFloat(expense.displayAmount).toFixed(2)}
-                        {" ("}
-                        {expense.currency} {expense.amount})
-                        <br />
-                        {expense.description}
-                      </Card.Text>
+                      <div>
+                        <Card.Title
+                          style={{ fontSize: "1rem", marginBottom: "5px" }}
+                        >
+                          <b>{expense.date}</b>
+                        </Card.Title>
+                        <Card.Text>
+                          {`${expense.description} (${expense.currency} ${expense.amount})`}
+                        </Card.Text>
+                      </div>
+                      <div style={{ marginLeft: "auto" }}>
+                        <Card.Text>{`${expense.displayCurrency} ${parseFloat(
+                          expense.displayAmount
+                        ).toFixed(2)}`}</Card.Text>
+                      </div>
                     </Card.Body>
                   </Card>
                 ))}

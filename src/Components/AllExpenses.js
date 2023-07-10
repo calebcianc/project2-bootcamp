@@ -116,7 +116,7 @@ export default function AllExpenses({
                         }
                       >
                         <Card onClick={() => handleOnSelect(expense)}>
-                          <Card.Body style={{ padding: "10px 15px" }}>
+                          <Card.Body style={{ padding: "5px 15px" }}>
                             <div className="card-content">
                               {/* Additional div wrapper needed to keep the category icon circle round */}
                               <div
@@ -175,7 +175,7 @@ export default function AllExpenses({
                                   )}
                                 </div>
                                 <div>
-                                  <Card.Subtitle>
+                                  <Card.Subtitle style={{ marginTop: "0" }}>
                                     {expense.category}
                                   </Card.Subtitle>
                                   <Card.Text className="text-muted">
