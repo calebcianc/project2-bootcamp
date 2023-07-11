@@ -231,9 +231,6 @@ export default function App() {
             })
           );
 
-          console.log(`expensesData: ${JSON.stringify(expensesData)}`);
-          console.log(`expensesArray: ${JSON.stringify(expensesArray)}`);
-
           // Sort expenses array by date, with the latest at the top of the list
           const sortedExpenses = expensesArray.sort(
             (a, b) => new Date(b.date) - new Date(a.date)
@@ -294,6 +291,8 @@ export default function App() {
       expensesListener();
     };
   }, [uid, isLoadingCategories, categoriesData]);
+
+  console.log("groupedExpenses", groupedExpenses);
 
   // convert currencies from array of objects to array of strings
   useEffect(() => {

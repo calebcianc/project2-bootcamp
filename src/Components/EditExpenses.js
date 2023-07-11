@@ -99,7 +99,7 @@ export default function EditExpenses({
       description: description,
       date: date,
     });
-    console.log(`expRef: ${expRef}`);
+
     if (receiptFile) {
       const expFileRef = storageRef(
         storage,

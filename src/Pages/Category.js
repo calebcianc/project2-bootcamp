@@ -24,14 +24,13 @@ export default function Category({ uid, isLoggedIn, categoriesData }) {
     e.preventDefault();
     // update user's profile with the new category
     const catRef = ref(realTimeDatabase, `${DB_CATEGORY_FOLDER_NAME}/${uid}`);
-    // console.log("selectedCategoryId:", selectedCategoryId);
     if (selectedCategoryId) {
       // Updating an existing category
       const catUpdateRef = ref(
         realTimeDatabase,
         `${DB_CATEGORY_FOLDER_NAME}/${uid}/${selectedCategoryId}`
       );
-      // console.log("catUpdateRef:", catUpdateRef);
+
       update(catUpdateRef, {
         category: category,
         color: color,
@@ -66,10 +65,6 @@ export default function Category({ uid, isLoggedIn, categoriesData }) {
       setChosenEmoji({ emoji: "🙂" });
     }
 
-    console.log(selectedCategoryId);
-    console.log(category);
-    console.log(color);
-    console.log(chosenEmoji);
     setShowCatModal(true);
   };
 
