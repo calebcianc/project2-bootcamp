@@ -31,11 +31,11 @@ export default function Support() {
     </ul>
     
     <br/>
-    Click <a href="https://geocoder.wigeogis.com/download/iso3.pdf" target="_blank" >here</a> for list of all the three-letter country codes`,
+    Click <a href="https://knowledgecenter.zuora.com/Quick_References/Country%2C_State%2C_and_Province_Codes/D_Currencies_and_Their_3-Letter_Codes" target="_blank" >here</a> for list of all the three-letter country codes`,
     },
     {
       title: "How to extract expenses",
-      info: `You can extract expenses into a csv file. <br/><br/>Here's how you can do it:
+      info: `You can extract expenses into an excel file. <br/><br/>Here's how you can do it:
           <ul>
             <li>Go to Expenses page</li>
             <li>Find the 📤 icon located next to the total expenses amount. </li>
