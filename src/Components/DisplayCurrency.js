@@ -56,7 +56,7 @@ export default function DisplayCurrency({
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleSubmit}>
+          <Button className="add-button" onClick={handleSubmit}>
             Update
           </Button>
         </Modal.Footer>
