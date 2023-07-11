@@ -16,7 +16,6 @@ export default function AuthForm({ isLoggedIn, username }) {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
         navigate("/mapexpenses");
       })
       .catch((error) => {

@@ -111,10 +111,6 @@ export default function MapExpenses({
     }
   };
 
-  // useEffect(() => {
-  //   console.log(JSON.stringify(filteredExpenses));
-  // }, [filteredExpenses]);
-
   return (
     <div>
       {/* Toast to notify user once expense has been successfully deleted */}

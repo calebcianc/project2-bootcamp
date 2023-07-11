@@ -60,10 +60,6 @@ export default function AllExpenses({
     });
   };
 
-  // useEffect(() => {
-  //   console.log(JSON.stringify(groupedExpenses));
-  // }, [isLoadingExpenses]);
-
   return (
     <div className="allExp-container">
       {noExpenses

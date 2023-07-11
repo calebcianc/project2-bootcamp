@@ -76,8 +76,6 @@ export default function InputExpenses({
   // add to expenses db and receipt storage
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("category:", category);
-    console.log("category:", category.category);
     const expRef = ref(realTimeDatabase, `${DB_EXPENSES_FOLDER_NAME}/${uid}`);
     const newExpRef = push(expRef);
     const newExpenseKey = newExpRef.key;

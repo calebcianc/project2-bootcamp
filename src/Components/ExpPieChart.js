@@ -15,7 +15,6 @@ export default function ExpPieChart({ filteredExpenses, categoriesData }) {
       displayAmountByCategory[categoryName].toFixed(2)
     );
   });
-  // console.log("displayAmountByCategory", displayAmountByCategory);
 
   // convert object into array of arrays.map convert each inner array to an object
   const pieChartData = Object.entries(displayAmountByCategory).map(

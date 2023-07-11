@@ -22,14 +22,9 @@ export default function DisplayCurrency({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(`Interim currency: ${interimCurrency}`);
     setDisplayCurrency(interimCurrency);
     handleClose();
   };
-
-  useEffect(() => {
-    console.log(`Display currency: ${displayCurrency}`);
-  }, [displayCurrency]);
 
   return (
     <div>
