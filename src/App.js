@@ -97,7 +97,6 @@ export default function App() {
     );
     get(dateRef)
       .then((snapshot) => {
-        console.log(`DB date: ${snapshot.val()}. Today's date is ${today}`);
         if (snapshot.val() === today) {
           const ratesRef = ref(
             realTimeDatabase,
@@ -140,11 +139,6 @@ export default function App() {
               const userData = snapshot.val(); // Retrieve the data of the node
               setUserData(userData);
               setDisplayCurrency(userData.displayCurrency);
-              console.log(
-                `user Data: ${JSON.stringify(userData)}; displayCurrency: ${
-                  userData.displayCurrency
-                }`
-              );
             } else {
               console.log("No data available");
             }
@@ -185,12 +179,11 @@ export default function App() {
       (snapshot) => {
         const catData = snapshot.val();
         if (catData) {
-          // console.log(JSON.stringify(catData));
           const catArray = Object.entries(catData).map(([key, value]) => ({
             id: key,
             ...value,
           }));
-          // console.log(catArray);
+
           setCategoriesData((prevCategoriesData) =>
             JSON.stringify(prevCategoriesData) !== JSON.stringify(catArray)
               ? catArray
@@ -254,7 +247,6 @@ export default function App() {
             });
 
             setExpensesCategory(joinedExpenses);
-            console.log("joinedExpenses in fetching exp", joinedExpenses);
 
             // Initialise an empty object to contain objects of dates: [expenses]
             const groupedExpenses = {};
@@ -271,7 +263,6 @@ export default function App() {
             });
 
             setGroupedExpenses(groupedExpenses);
-            console.log("groupedExpenses", groupedExpenses);
           }
         } else {
           setExpensesCategory([]); // Set expensesCategory to an empty array if there are no expenses

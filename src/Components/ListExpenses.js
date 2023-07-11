@@ -96,7 +96,6 @@ export default function ListExpenses({
     // map to pan to most recently added expense
     const getLatestExpLocation = () => {
       const expensesArray = Object.values(expensesCategory);
-      // console.log(expensesArray[0]);
       const lastExpense = expensesArray[0];
       if (lastExpense && !isNaN(lastExpense.lat) && !isNaN(lastExpense.lng)) {
         return { lat: lastExpense.lat, lng: lastExpense.lng };

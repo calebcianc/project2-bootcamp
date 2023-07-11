@@ -54,14 +54,10 @@ export default function GoogleButton() {
         });
 
         navigate("/mapexpenses");
-        // console.log("Firebase UID:", userCredential.user.uid);
       })
       .catch((error) => {
         console.error("Error signing in to Firebase:", error);
       });
-
-    // console.log("Encoded JWT ID token: " + response.credential);
-    // console.log(userObject);
   }
 
   useEffect(() => {

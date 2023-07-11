@@ -12,13 +12,6 @@ export default function Export({
 }) {
   const [counter, setCounter] = useState(0);
 
-  useEffect(() => {
-    console.log(`selectedExpenses value: ${JSON.stringify(selectedExpenses)}`);
-    console.log(
-      `selectedExpensesData value: ${JSON.stringify(selectedExpensesData)}`
-    );
-  }, [counter, selectedExpenses]);
-
   function convertToWorkbook(data) {
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet("Sheet1");

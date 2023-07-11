@@ -90,7 +90,6 @@ export default function MapExpenses({
       setIsHighlighted(null);
     } else {
       setIsHighlighted(expense.id);
-      // console.log(highlighted);
     }
   };
 

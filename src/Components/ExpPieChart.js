@@ -23,7 +23,6 @@ export default function ExpPieChart({ filteredExpenses, categoriesData }) {
       displayAmount,
     })
   );
-  // console.log("pieChartData", pieChartData);
 
   // merge piechart with category to append the color and emoji
   const joinedPieChartData = useMemo(() => {
@@ -38,7 +37,6 @@ export default function ExpPieChart({ filteredExpenses, categoriesData }) {
       return { ...expense, ...fallbackCategory };
     });
   }, [pieChartData, categoriesData]);
-  // console.log("joinedPieChartData:", joinedPieChartData);
 
   return (
     <ResponsiveContainer>
