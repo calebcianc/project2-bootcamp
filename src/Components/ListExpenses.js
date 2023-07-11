@@ -52,13 +52,34 @@ export default function ListExpenses({
 
   // Filter the expenses based on the selected start date and end date
   useEffect(() => {
-    const filteredExpenses = expensesCategory.filter((expense) => {
+    let filteredExpenses = expensesCategory.filter((expense) => {
       const expenseDate = new Date(expense.date);
       return (
         expenseDate >= new Date(filters.startDate) &&
         expenseDate <= new Date(filters.endDate)
       );
     });
+
+    // Filter the expenses based on the selected category
+    if (filters.category) {
+      filteredExpenses = filteredExpenses.filter((expense) => {
+        return expense.category === filters.category;
+      });
+    }
+
+    // Filter the expenses based on the selected upper limit
+    if (filters.upperLimit) {
+      filteredExpenses = filteredExpenses.filter((expense) => {
+        return parseFloat(expense.displayAmount) <= filters.upperLimit;
+      });
+    }
+
+    // Filter the expenses based on the selected lower limit
+    if (filters.lowerLimit) {
+      filteredExpenses = filteredExpenses.filter((expense) => {
+        return parseFloat(expense.displayAmount) >= filters.lowerLimit;
+      });
+    }
 
     // Sum up the totalAmount for the filtered expenses
     const calculatedTotalAmount = filteredExpenses.reduce(

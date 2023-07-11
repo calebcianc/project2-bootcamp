@@ -79,12 +79,12 @@ export default function AllExpenses({
                 return false;
               if (
                 filters.lowerLimit &&
-                expense.displayAmount < filters.lowerLimit
+                parseFloat(expense.displayAmount) < filters.lowerLimit
               )
                 return false;
               if (
                 filters.upperLimit &&
-                expense.displayAmount > filters.upperLimit
+                parseFloat(expense.displayAmount) > filters.upperLimit
               )
                 return false;
               return true;
