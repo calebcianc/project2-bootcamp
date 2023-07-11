@@ -28,6 +28,7 @@ const DB_EXCHANGERATES_FOLDER_NAME = "exchangeRates";
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState("");
+  const [userDisplayName, setUserDisplayName] = useState("");
   const [uid, setUid] = useState("");
   const [profilePhotoURL, setProfilePhotoURL] = useState("");
   const [fileInputFile, setFileInputFile] = useState("");
@@ -154,11 +155,15 @@ export default function App() {
         // set the onValue listener to listen to changes immediately when data is fetched. Should not nest inside get as get only fetches the data once. Even if there are other changes later on, it will not be reflected.
         onValue(userDataRef, (snapshot) => {
           const userData = snapshot.val();
+
           if (userData) {
             // Use UID to find profile url
             if (userData.hasOwnProperty("profileUrl")) {
               setProfilePhotoURL(userData.profileUrl);
             }
+            setUserDisplayName(userData.displayName);
+            // Set the new userData
+            setUserData(userData);
           } else {
             console.log("No data available");
           }
@@ -169,7 +174,7 @@ export default function App() {
         setProfilePhotoURL("");
       }
     });
-  }, [uid]);
+  }, [uid, userDisplayName]);
 
   // Fetches latest category array, triggered with every change to the list of categories
   useEffect(() => {
@@ -377,7 +382,7 @@ export default function App() {
                         width="30"
                         height="30"
                       />{" "}
-                      {userData.displayName}
+                      {userDisplayName}
                     </>
                   ) : (
                     <img
