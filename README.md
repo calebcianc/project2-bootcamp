@@ -1,6 +1,6 @@
 # Dollar Direction
 
-An expense tracker application that can track expenses and location.
+An expense tracker application that can track expenses and location. <br>
 Deployment page: [Dollar Direction](https://project2-bootcamp.vercel.app/)
 
 ## Preview
