@@ -1,15 +1,71 @@
-# Rocket Academy Coding Bootcamp: Project 2: Full-Stack App (Firebase)
+# Dollar Direction
 
-https://bc.rocketacademy.co/2-full-stack/2.p-full-stack-app-firebase
+An expense tracker application that can track expenses and location.
+Deployment page: [Dollar Direction](https://project2-bootcamp.vercel.app/)
 
-## Available Scripts
+## Preview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). In the project directory, you can run:
+![DD gif](./src/Reference/DollarDirection.gif)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Add, edit and delete expenses
+- Markers will be displayed on map for each added expenses according to the legend
+- Change display currencies
+- Filter and export expenses
+- Dashboards to view expenses view by daily, monthly and yearly
+  - bargraph to show expenses by time period
+  - pie chart to show expenses by category
+- customise category with emoji and color
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech Used
+
+- Front end: [React](https://react.dev/)
+- Routing: [React Router](https://reactrouter.com/en/main)
+- UI: [React Bootstrap](https://react-bootstrap.github.io/)
+- Storage/Database/Auth: [Firebase](https://firebase.google.com/)
+- Map API: [Google Maps](https://developers.google.com/maps)
+- Currency API: [Currency](https://secure.mas.gov.sg/api/APIDESCPAGE.ASPX?RESOURCE_ID=2f0d9ccd-4190-41fd-a53d-2a319934ca6c)
+
+## Setup
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). In the project directory, you can runthe following steps for the application to work:
+
+1. Clone repo to local
+
+2. Configure `.env` file, make sure to get your own API keys stated below and insert it into your `.env` file
+
+```
+REACT_APP_API_KEY = <API key>
+REACT_APP_AUTH_DOMAIN =  <API key>
+REACT_APP_DATABASE_URL =  <API key>
+REACT_APP_PROJECT_ID =  <API key>
+REACT_APP_STORAGE_BUCKET =  <API key>
+REACT_APP_MESSAGING_SENDER_ID = <API key>
+REACT_APP_APP_ID =  <API key>
+REACT_APP_EXCHANGE_API_KEY= <API key>
+```
+
+3. Install all dependencies required in this repo, and run locally
+
+```
+npm i
+npm i react-bootstrap bootstrap
+npm i react-router-dom
+npm i  @react-google-maps/api
+npm i react-bootstrap-typeahead
+npm i recharts
+npm i react-color
+npm i emoji-picker-react@3.5.1
+npm i react-bootstrap-icons
+npm i xlsx
+npm i exceljs
+```
+
+Enter 'npm start' into Terminal to render the app.
+Open http://localhost:3000 to view it in your browser.
+
+## Contributers
+
+- [Caleb Castro](https://github.com/calebcianc)
+- [Chloe Li](https://github.com/khloeli)
