@@ -29,7 +29,7 @@ Deployment page: [Dollar Direction](https://project2-bootcamp.vercel.app/)
 
 ## Setup
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). In the project directory, you can runthe following steps for the application to work:
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). In the project directory, you can run the following steps for the application to work:
 
 1. Clone repo to local
 
