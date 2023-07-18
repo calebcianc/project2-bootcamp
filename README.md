@@ -50,16 +50,6 @@ REACT_APP_EXCHANGE_API_KEY= <API key>
 
 ```
 npm i
-npm i react-bootstrap bootstrap
-npm i react-router-dom
-npm i  @react-google-maps/api
-npm i react-bootstrap-typeahead
-npm i recharts
-npm i react-color
-npm i emoji-picker-react@3.5.1
-npm i react-bootstrap-icons
-npm i xlsx
-npm i exceljs
 ```
 
 Enter 'npm start' into Terminal to render the app.
